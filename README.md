@@ -13,7 +13,7 @@ Za projektno nalogo sem si izbral tematiko gradbeništva. Osredotočil se bom na
 ### Potek dela
 * Najprej bom, na podlagi zadnjih razpoložjivih podatkov o izdanih gradbenih dovoljenjih za stanovanja po statističnih regijah Slovenije, napovedal kje se bo v prihodnosti gradilo največ oziroma najmanj stanovanjskih objektov ter podatke v deležih gradbenih dovoljenj prikazal s tortnim diagramom. 
 
-* V nadaljevanju se bom osredotočil na gibanje gradbenih stroškov in njihovih dveh komponent (stroški dela in stroški materiala) skozi leta ter komentiral svoje ugotovitve.
+* V nadaljevanju se bom osredotočil na gibanje gradbenih stroškov in njihovih dveh komponent (stroški dela in stroški materiala) skozi leta ter komentiral svoje ugotovitve. V kasnejši fazi bom primerjal gibanje stroškov dela z vrednostjo opravljenih gradbenih del v posameznem letu.
 
 * Kasneje bom opazoval povezavo med indeksom cen arhitekturnega projektiranja, ki je tesno povezano z gradbeništvom, in vrednostjo opravljenih gradbenih del v posameznem letu ter to prikazal v linijskem grafikonu, kjer bo lepo viden skupen trend in korelacija med obema kazalcema.
 
