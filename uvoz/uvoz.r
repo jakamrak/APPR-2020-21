@@ -55,37 +55,102 @@
 # fazah.
 
 
-
-
+library(rjson)
+library(readxl)
 library(tidyr)
 library(dplyr)
 library(readr)
 
-#GRADBENA DOVOLJENJA
+#GRADBENA DOVOLJENJA LETNO
 
+#definiramo nova imena stolpcev
 stolpci.dovoljenja <- c("StatisticnaRegija", "Investitor", "TipStavbe", "Leto", "SteviloStavb", "PovrsinaStavb")
 
+#preberemo datoteko
 gradbena.dovoljenja.letno.zacetna <- read_csv("podatki/gradbena-dovoljenja-po-regijah-letno.csv", 
                      locale = locale(encoding = "windows-1250")) %>% as.data.frame()
   
+#preimenujemo stolpce
 colnames(gradbena.dovoljenja.letno.zacetna) <- stolpci.dovoljenja 
 
+#zdruzimo po regijah in letih
 gradbena.dovoljenja.letno <- gradbena.dovoljenja.letno.zacetna %>% group_by(StatisticnaRegija, Leto) %>% 
-  summarise(SteviloStavb=sum(SteviloStavb), "Povrsina[m2]"=sum(PovrsinaStavb))
+  summarise(SteviloStavb=sum(SteviloStavb), Povrsina_m2=sum(PovrsinaStavb))
 
 
 #INDEKS CEN GRADBENIH STROŠKOV
 
+#definirao nova imena stolpcev
+stolpci.gradb.stroski <- c("Cetrtletje", "SkupajStroski", "StroskiMateriala", "StroskiDela")
+
+#preberemo datoteko
 
 gradbeni.stroski <- read_csv2("podatki/gradb-stroski-cetrtletno.csv", 
                               locale = locale(encoding = "windows-1250", 
                                               decimal_mark = "."), skip = 2) %>% as.data.frame()
 
-
-stolpci.gradb.stroski <- c("Cetrtletje", "SkupajStroski", "StroskiMateriala", "StroskiDela")
-
+#preimenujemo stolpce
 colnames(gradbeni.stroski) <- stolpci.gradb.stroski
 
 
 
+#GRADBENA DOVOLJENJA MESEC SEPT
+
+
+
+#INDEKS CEN ARHITEKTURNEGA PROJEKTIRANJA
+
+#uvozimo pdatke
+indeks.cen.arh.proj.uvoz <- read_csv2("podatki/arh-proj.csv", 
+                              locale = locale(encoding = "windows-1250", 
+                                              decimal_mark = "."), skip = 2) %>% as.data.frame()
+#odstranio 2. stolpec saj ga ne rabimo
+indeks.cen.arh.proj <- indeks.cen.arh.proj.uvoz %>% select(-"SKD DEJAVNOST")
+
+#definiramo imena stolpcev
+stolpci.arh.proj <- c("Cetrtletje", "IndeksCen")
+
+#preimenujemo stolpce
+colnames(indeks.cen.arh.proj) <- stolpci.arh.proj
+
+#dodamo stolpec leto kjer bo povprecje 4 cetrtletji
+
+
+
+
+#INDEKS POVPREČNE MESEČNE NETO PLAČE PO REGIJAH
+
+#definiramo nova imena stolpcev
+stolpci.place <- c("StatisticnaRegija", "Leto", "Indeks")
+
+#uvozimo podatke
+indeks.neto.plac <-  read_csv("podatki/indeks-povp-mes-neto-place-regije.csv", 
+                         locale = locale(encoding = "windows-1250", 
+                                         decimal_mark = ".")) %>% as.data.frame() 
+
+#preimenujemo stolpce
+colnames(indeks.neto.plac) <- stolpci.place
+
+
+#DELEŽ NASELJENIH STANOVANJ BREZ OSNOVNE INFRASTRUKTURE
+
+#uvozimo podatke
+stanovanja.brez.os.infra.uvoz <- read_xlsx("podatki/stanovanja-brez-os-infrastrukture.xlsx", 
+                                           skip = 2, n_max = 36)
+
+#definiramo nova imena stolpcev
+stolpci.stanovanja.brez.os.infra <- c("StatisticnaRegija", "Leto", "Delez_%")
+ 
+#preimenujemo stolpce
+colnames(stanovanja.brez.os.infra.uvoz) <- stolpci.stanovanja.brez.os.infra
+
+#dodamo manjkajoče podatke imen regij
+stanovanja.brez.os.infra <- stanovanja.brez.os.infra.uvoz %>% fill(1:3)
+
+
+
+#VREDNOST OPRAVLJENIH GRADBENIH DEL
+
+json.file <- "podatki/vrednost-opravljenih-gradb-del-v-1000-eur.json"
+#json.podatki <- fromJSON(readLines(json.file)) %>% as.data.frame()
 
