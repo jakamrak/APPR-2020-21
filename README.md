@@ -24,7 +24,7 @@ Za projektno nalogo sem si izbral tematiko gradbeništva. Osredotočil se bom na
 ### Tabele
 
 1. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1970716S.px/): Dovoljenja za gradnjo stavb: število stavb, njihova gradbena velikost, po statističnih regijah, Slovenija, letno (v obliki CSV)
-2. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1970712S.px): Število izdanih gradbenih dovoljenj po statističnih regijah, mesečno (v obliki HTML)
+2. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1970712S.px): Število izdanih gradbenih dovoljenj po statističnih regijah, mesečno (v obliki CSV)
 3. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1957611S.px/): Indeksi gradbenih stroškov za nova stanovanja v gradbeništvu (četrtletje / povprečje leta 2015), Slovenija, četrtletno (v obliki CSV)
 4. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/0861201S.px/): Izbrani kazalniki stanovanjskega standarda, statistične regije, Slovenija, večletno (v obliki xlsx)
 5. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/0772610S.px/): Povprečne mesečne plače po kohezijskih in statističnih regijah, Slovenija, letno (v obliki CSV)

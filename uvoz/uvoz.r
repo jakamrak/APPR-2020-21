@@ -98,28 +98,28 @@ colnames(gradbeni.stroski) <- stolpci.gradb.stroski
 
 #GRADBENA DOVOLJENJA MESEC SEPT
 
+gradb.dovoljenja.sept.uvoz <- read_csv2("podatki/gradb-dovoljenja-sept.csv", 
+                                        skip=2, locale=locale(encoding = "windows-1250"))
 
+gradb.dovoljenja.sept <- gradb.dovoljenja.sept.uvoz %>%
+  select(-3, -5) %>%
+  rename(StatisticnaRegija=1, VrstaObjekta=2, SteviloStavb=3, )
 
 
 #INDEKS CEN ARHITEKTURNEGA PROJEKTIRANJA
 
 #uvozimo pdatke
-indeks.cen.arh.proj <- read_delim("podatki/arh-proj.csv", ";",
-locale = locale(encoding = "windows-1250",decimal_mark = "."), skip = 2) %>%
-  as.data.frame()
-
-#odstranio 2. stolpec saj ga ne rabimo
-indeks.cen.arh.proj <- indeks.cen.arh.proj %>% select(-"SKD DEJAVNOST")
-
-#definiramo imena stolpcev
-stolpci.arh.proj <- c("Cetrtletje", "IndeksCen")
-
-#preimenujemo stolpce
-colnames(indeks.cen.arh.proj) <- stolpci.arh.proj
-
-#dodamo stolpec leto kjer bo povprecje 4 cetrtletji
+indeks.cen.arh.proj.uvoz <- read_delim("podatki/arh-proj.csv", ";",
+                                  locale = locale(encoding = "windows-1250",
+                                                  decimal_mark = "."), skip = 2) %>% as.data.frame()
 
 
+indeks.cen.arh.proj <- indeks.cen.arh.proj.uvoz %>% 
+  rename(INDEKS=3, SKD=`SKD DEJAVNOST`) %>%   # poenostavitev imen
+  separate(ČETRTLETJE, c("LETO", "CETR"), "Q") %>% # razbitje na dva stolpca
+  group_by(LETO, SKD) %>% # grupiranje po letih, SKD damo samo še zraven, ker je itak isti
+  summarise(POV_INDEKS=mean(INDEKS)) %>%
+  select(-2) #odstranimo stolpec skd saj nam ne rabi
 
 
 #INDEKS POVPREČNE MESEČNE NETO PLAČE PO REGIJAH
@@ -142,17 +142,11 @@ colnames(indeks.neto.plac) <- stolpci.place
 stanovanja.brez.os.infra.uvoz <- read_xlsx("podatki/stanovanja-brez-os-infrastrukture.xlsx", 
                                            skip = 2, n_max = 36)
 
-#definiramo nova imena stolpcev
-stolpci.stanovanja.brez.os.infra <- c("StatisticnaRegija", "Leto", "Delez_%")
- 
-#preimenujemo stolpce
-colnames(stanovanja.brez.os.infra.uvoz) <- stolpci.stanovanja.brez.os.infra
 
-#dodamo manjkajoče podatke imen regij
 stanovanja.brez.os.infra <- stanovanja.brez.os.infra.uvoz %>% 
-  fill(1:3) %>% 
-  mutate(Leto=as.integer(Leto)) #spremenimo class za stolpec leto v numeric
-
+  fill(1:3) %>% #dodamo manjkajoče podatke imen regij
+  rename(StatisticnaRegija=1, Leto=2, 'Delez_%'=3) %>% #preimenujemo stolpce
+  mutate(Leto=as.integer(Leto))  #spremenimo class za stolpec leto v numeric
 
 
 
