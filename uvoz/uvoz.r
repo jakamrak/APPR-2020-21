@@ -64,13 +64,13 @@ library(rvest)
 
 #GRADBENA DOVOLJENJA LETNO
 
-#definiramo nova imena stolpcev
-stolpci.dovoljenja <- c("StatisticnaRegija", "Investitor", "TipStavbe", "Leto", "SteviloStavb", "PovrsinaStavb")
-
 #preberemo datoteko
 gradbena.dovoljenja.letno.zacetna <- read_csv("podatki/gradbena-dovoljenja-po-regijah-letno.csv",
                                               locale = locale(encoding = "windows-1250")) %>% as.data.frame()
   
+#definiramo nova imena stolpcev
+stolpci.dovoljenja <- c("StatisticnaRegija", "Investitor", "TipStavbe", "Leto", "SteviloStavb", "PovrsinaStavb")
+
 #preimenujemo stolpce
 colnames(gradbena.dovoljenja.letno.zacetna) <- stolpci.dovoljenja 
 
@@ -82,17 +82,23 @@ gradbena.dovoljenja.letno <- gradbena.dovoljenja.letno.zacetna %>%
 
 #INDEKS CEN GRADBENIH STROŠKOV
 
-#definirao nova imena stolpcev
-stolpci.gradb.stroski <- c("Cetrtletje", "SkupajStroski", "StroskiMateriala", "StroskiDela")
-
 #preberemo datoteko
-
-gradbeni.stroski <- read_delim("podatki/gradb-stroski-cetrtletno.csv",";",locale =
+gradbeni.stroski.uvoz <- read_delim("podatki/gradb-stroski-cetrtletno.csv",";",locale =
 locale(encoding = "windows-1250", decimal_mark = "."),skip = 2) %>% 
   as.data.frame()
 
+#definirao nova imena stolpcev
+stolpci.gradb.stroski <- c("Cetrtletje", "SkupajStroski", "StroskiMateriala", "StroskiDela")
+
 #preimenujemo stolpce
-colnames(gradbeni.stroski) <- stolpci.gradb.stroski
+colnames(gradbeni.stroski.uvoz) <- stolpci.gradb.stroski
+
+gradbeni.stroski <- gradbeni.stroski.uvoz %>%
+  separate(Cetrtletje, c("Leto", "Cetrtletje"), "Q") %>% 
+  group_by(Leto) %>%
+  summarise(SkupajStroski=mean(SkupajStroski), StroskiMateriala=mean(StroskiMateriala),
+            StroskiDela=mean(StroskiDela))
+
 
 
 
@@ -153,5 +159,9 @@ stanovanja.brez.os.infra <- stanovanja.brez.os.infra.uvoz %>%
 #VREDNOST OPRAVLJENIH GRADBENIH DEL
 
 json.file <- "podatki/vrednost-opravljenih-gradb-del-v-1000-eur.json"
-#json.podatki <- fromJSON(readLines(json.file)) %>% as.data.frame()
+json.podatki <- fromJSON(file = json.file)
 
+vrednost.gradb.del <- sapply(json.podatki$data, unlist) %>% #poberemo vn podatke
+  t() %>% .[, c("key3", "values")] %>% #transponiramo in vzamemo stolpca z letom in vrednostjo
+  data.frame() %>%   #spremenimo v data frame
+  transmute(leto=parse_number(key3), vrednost=parse_number(values))  #preimenujemo in nastavimo tip
