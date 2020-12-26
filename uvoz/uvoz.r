@@ -97,7 +97,8 @@ gradbeni.stroski <- gradbeni.stroski.uvoz %>%
   separate(Cetrtletje, c("Leto", "Cetrtletje"), "Q") %>% 
   group_by(Leto) %>%
   summarise(SkupajStroski=mean(SkupajStroski), StroskiMateriala=mean(StroskiMateriala),
-            StroskiDela=mean(StroskiDela))
+            StroskiDela=mean(StroskiDela)) %>%
+  pivot_longer(2:4,names_to = "TipStroska",values_to = "Indeks")
 
 
 
@@ -151,7 +152,7 @@ stanovanja.brez.os.infra.uvoz <- read_xlsx("podatki/stanovanja-brez-os-infrastru
 
 stanovanja.brez.os.infra <- stanovanja.brez.os.infra.uvoz %>% 
   fill(1:3) %>% #dodamo manjkajoče podatke imen regij
-  rename(StatisticnaRegija=1, Leto=2, 'Delez_%'=3) %>% #preimenujemo stolpce
+  rename(StatisticnaRegija=1, Leto=2, DelezVOdstotkih=3) %>% #preimenujemo stolpce
   mutate(Leto=as.integer(Leto))  #spremenimo class za stolpec leto v numeric
 
 
@@ -163,5 +164,5 @@ json.podatki <- fromJSON(file = json.file)
 
 vrednost.gradb.del <- sapply(json.podatki$data, unlist) %>% #poberemo vn podatke
   t() %>% .[, c("key3", "values")] %>% #transponiramo in vzamemo stolpca z letom in vrednostjo
-  data.frame() %>%   #spremenimo v data frame
-  transmute(leto=parse_number(key3), vrednost=parse_number(values))  #preimenujemo in nastavimo tip
+  data.frame(stringsAsFactors=FALSE) %>%   #spremenimo v data frame
+  transmute(Leto=parse_number(key3), Vrednost_1000MioEUR=parse_number(values))  #preimenujemo in nastavimo tip
