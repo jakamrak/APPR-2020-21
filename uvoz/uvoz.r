@@ -1,12 +1,7 @@
 ## 2. faza: Uvoz podatkov
 
 
-library(rjson)
-library(readxl)
-library(tidyr)
-library(dplyr)
-library(readr)
-library(rvest)
+source('lib/libraries.r', encoding = 'UTF-8')
 
 #GRADBENA DOVOLJENJA LETNO
 
@@ -41,10 +36,11 @@ colnames(gradbeni.stroski.uvoz) <- stolpci.gradb.stroski
 
 gradbeni.stroski <- gradbeni.stroski.uvoz %>%
   separate(Cetrtletje, c("Leto", "Cetrtletje"), "Q") %>% 
-  group_by(Leto) %>%
+  group_by(Leto=as.integer(Leto)) %>%
   summarise(SkupajStroski=mean(SkupajStroski), StroskiMateriala=mean(StroskiMateriala),
             StroskiDela=mean(StroskiDela)) %>%
   pivot_longer(2:4,names_to = "TipStroska",values_to = "Indeks")
+  
 
 
 
@@ -56,8 +52,10 @@ gradb.dovoljenja.sept.uvoz <- read_csv2("podatki/gradb-dovoljenja-sept.csv",
 
 gradb.dovoljenja.sept <- gradb.dovoljenja.sept.uvoz %>%
   select(-3, -5) %>%
-  rename(StatisticnaRegija=1, VrstaObjekta=2, SteviloStavb=3, )
-
+  rename(StatisticnaRegija=1, VrstaObjekta=2, SteviloStavb=3, ) %>%
+  group_by(StatisticnaRegija) %>%
+  summarise(SkupajObjekti = sum(SteviloStavb))
+  
 
 #INDEKS CEN ARHITEKTURNEGA PROJEKTIRANJA
 

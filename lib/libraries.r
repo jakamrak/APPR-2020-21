@@ -4,6 +4,11 @@ library(gsubfn)
 library(tidyr)
 library(tmap)
 library(shiny)
+library(ggplot2)
+library(rjson)
+library(readxl)
+library(dplyr)
+library(readr)
 
 options(gsubfn.engine="R")
 

@@ -74,20 +74,38 @@ Podatke, potrebne za analize sem uvozil iz SURS-a v obliki CSV, xlsx in json. Vs
   - `Vrednost_1000EUR` - meritev: vrednost vseh opravljenih gradbenih del v posameznem letu meritve v Sloveniji (število).
   
   
-  
 
-#```{r histogram, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-#ggplot(obcine, aes(x=naselja)) + geom_histogram() +
-#  ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin")
-#```
 
 ***
 
 # Analiza in vizualizacija podatkov
 
-```{r vizualizacija, results='hide'}
-#source("vizualizacija/vizualizacija.r", encoding="UTF-8")
+```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
+
+
+Prvi graf prikazuje deleže izdanih gradbenih dovoljenj po statističnih regija za mesec september. Iz podatkov o izdanih gradbenih dovoljenjih lahko zelo na grobo napovemo, kaj se bo z fradnjo dogajalo v bližnji prihodnosti, saj večina stavb, za katere se pridobi gradbeno dovoljenje nazadnje dočaka tudi izgradnjo. 
+Vidimo lahko, da se daleč najmanj gradi oziroma se bo gradilo v Obalno-kraški regiji, kar je slabo za razvoj tega območja. največ se bo gradilov Jugovzhodni Sloveniji in na Savinjskem, kar je zelo pozitivno za prihodnji razvoj regij. 
+
+```{r graf1, echo=FALSE, fig.align='center'}
+graf_tortni
+```
+
+
+Spodnji graf kaže indekse stroškov dela, materiala in skupnih gradbenih stroškov. 
+Večino časa je strošek dela najvišji (višji kot strošek materiala in posledično skupni stroški), z izjemo med leti 2013 in 2015, ko se je gradbeništvo znašlo v največji krizi v zadnjem desetletju. Kriza se začne kazati že leta 2011, kar sovpada z začetkom nižanja stroškov gradbenih del. Material se v tem obdobju ne poceni, zanimivo pa je dejstvo, da se material poceni v letu 2020, podatke katerega nisem vključil, saj niso na voljo vsi potrebni podatki (zadnje četrtletje še ni na voljo). Razlog za cenitev stroškov materiala pa je predvsem v vedno manj kvalitetni gradnji, saj vsi investitorji razmišljajo samo o svojem zaslužku, ki ga večajo na račun nižje kakovosti gradnje. 
+
+```{r graf2, echo=FALSE, fig.align='center'}
+graf_stroski
+```
+
+
+
+
+
+
+
 
 Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
 
