@@ -100,20 +100,23 @@ Večino časa je strošek dela najvišji (višji kot strošek materiala in posle
 graf_stroski
 ```
 
+V tretjem grafu sem primerjal indeks neto plače in delež naseljenih stanovanj brez osnovne infrastrukture po regijah Slovenije. Analizo sem naredil za 3 ločena leta in v vseh primerih je lepo viden trend, ki ga prikazuje tudi padajoča premica, kar pomeni, da je v regijah, kjer so plače nižje, tudi delež stanovanj brez osnovne infrastrukture višji. Rezultati in ugotovitve so pričakovani, saj je najvišji delež takih stanovanj v Pomurski regiji, kjer so tudi plače v popvrečju najnižje. Na drugi strani izstopa Gorenjska, kjer so plače v vseh 3 letih v bližini povprečja Slovenije, delež omenjenih stanovanj pa dalež najnižji. Razlog za to je predvsem ta, da v tej regiji živi veliko ljudi, ki se na delo vozijo v Ljubljano in imajo zato v povprečju boljše tudi življenske pogoje.
 
 
-
+```{r graf3, echo=FALSE, fig.align='center'}
+graf_infra.in.place
+```
 
 
 
 
 Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
 
-#```{r zemljevid, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
+```{r zemljevid, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
 #tm_shape(merge(zemljevid, povprecja, by.x="OB_UIME", by.y="obcina")) +
 #  tm_polygons("povprecje", title="Povprečje") +
 #  tm_layout(title="Povprečno število otrok v družini")
-#```
+```
 
 ***
 
@@ -125,7 +128,7 @@ Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
 
 Spodnji graf prikazuje povezavo med številom naselij in površino občine.
 
-#```{r graf, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
+```{r graf, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
 #ggplot(inner_join(obcine, data.frame(obcina=names(skupine),
 #                                     skupina=factor(skupine)), by="obcina")
 #, aes(x=povrsina, y=naselja, color=skupina, size=prebivalci/1000)) + geom_point() +
@@ -133,10 +136,10 @@ Spodnji graf prikazuje povezavo med številom naselij in površino občine.
 #  xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
 #  guides(color=guide_legend(title="Skupina"),
 #         size=guide_legend(title="Prebivalci (* 1000)"))
-#```
+```
 
 ***
 
-#```{r shiny}
+```{r shiny}
 #shinyAppDir("shiny", options=list(width="100%", height=600))
-#```
+```

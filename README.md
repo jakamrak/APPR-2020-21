@@ -23,13 +23,40 @@ Za projektno nalogo sem si izbral tematiko gradbeništva. Osredotočil se bom na
 
 ### Tabele
 
-1. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1970716S.px/): Dovoljenja za gradnjo stavb: število stavb, njihova gradbena velikost, po statističnih regijah, Slovenija, letno (v obliki CSV)
-2. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1970712S.px): Število izdanih gradbenih dovoljenj po statističnih regijah, mesečno (v obliki CSV)
-3. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1957611S.px/): Indeksi gradbenih stroškov za nova stanovanja v gradbeništvu (četrtletje / povprečje leta 2015), Slovenija, četrtletno (v obliki CSV)
-4. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/0861201S.px/): Izbrani kazalniki stanovanjskega standarda, statistične regije, Slovenija, večletno (v obliki xlsx)
-5. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/0772610S.px/): Povprečne mesečne plače po kohezijskih in statističnih regijah, Slovenija, letno (v obliki CSV)
-6. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1919802S.px/): Vrednost opravljenih gradbenih del [v 1000 EUR] (v obliki JSON)
-7. [tabela](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/0427601S.px/): Indeks cen arhitekturnega projektiranja (v obliki CSV)
+1. [gradbena.dovoljenja.letno](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1970716S.px/) - podatki o izdanih gradbenih dovoljenjih po statističnih regijah
+  - `StatisticnaRegija` - spremenljivka: ime statistične regije (character),
+  - `Leto` - spremenljivka: leto meritve (numeric),
+  - `SteviloStavb` - meritev: število stavb za katere je bilo v nekem letu izdano gradbeno dovoljenje (numeric),
+  - `Povrsina_m2` -meritev: površina stavb za katere je bilo v nekem letu izdano gradbeno dovoljenje (numeric).
+
+2. [gradbena.dovoljenja.sept](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1970712S.px) - podatki o izdanih gradbenih dovoljenjih za mesec september
+  - `StatisticnaRegija` - spremenljivka: ime statistične regije (neurejen faktor),
+  - `VrstaObjekta` - spremenljivka: pove ali je meritev za stanovanske ali nestanovanjske stavbe (neurejen faktor),
+  - `SteviloStavb` - meritev: stevilo stavb za katere je bilo izdano gradbeno dovoljenje (število).
+  
+  3. [gradbeni.stroski](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1957611S.px/) - letni indeksi gradbenih stroškov
+  - `Leto` - spremenljivka: leto meritve (število),
+  - `TipStroska` - spremenljivka: pove nam za kateri tip stroška gre (neurejen faktor),
+  - `Indeks` - meritev: indeks tega stroška v določenem letu (število).
+  
+  4. [indeks.cen.arh.proj](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/0427601S.px/) - podatki o ceni storitve arhitekturnega projektiranja
+  - `Leto` - spremenljivka: leto meritve (število),
+  - `PovprecenIndeks` - meritev: povprečen indeks, izračunan iz četrtletnih (število).
+  
+  5. [indeks.neto.plac](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/0772610S.px/) - podatki o neto plačah po statističnih regijah letno
+  - `StatisticnaRegija` - spremenljivka: ime statistične regije (neurejen faktor),
+  - `Leto` - spremenljivka: leto meritve (število),
+  - `Indeks` - meritev: indeks neto plače (število).
+  
+  6. [stanovanja.brez.os.infra](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/0861201S.px/) - podatki o deležih naseljenih stanovanj brez osnovne infrastrukture po statističnih regijah
+  - `StatisticnaRegija` - spremenljivka: ime statistične regije (neurejen faktor),
+  - `Leto` - spremenljivka:lwto meritve (število),
+  - `DelezVOdstotkih` - meritev: delež stanovanj brez osnovne infrastrukture v letu meritve (število).
+  
+  7. [vrednost.gradb.del](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1919802S.px/)- podatki o vrednosti opravljenih gradbenih del v posameznem letu (v 1000 EUR)
+  - `Leto` - spremenljivka: leto meritve (število),
+  - `Vrednost_1000EUR` - meritev: vrednost vseh opravljenih gradbenih del v posameznem letu meritve v Sloveniji (število).
+  
 
 
 ## Program

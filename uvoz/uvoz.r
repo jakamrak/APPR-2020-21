@@ -1,8 +1,6 @@
 ## 2. faza: Uvoz podatkov
 
 
-source('lib/libraries.r', encoding = 'UTF-8')
-
 #GRADBENA DOVOLJENJA LETNO
 
 #preberemo datoteko
@@ -72,6 +70,7 @@ indeks.cen.arh.proj <- indeks.cen.arh.proj.uvoz %>%
   summarise(PovprecenIndeks=mean(INDEKS)) %>%
   select(-2) #odstranimo stolpec skd saj nam ne rabi
   
+indeks.cen.arh.proj$Leto <- as.integer(indeks.cen.arh.proj$Leto)
 
 
 #INDEKS POVPREČNE MESEČNE NETO PLAČE PO REGIJAH
