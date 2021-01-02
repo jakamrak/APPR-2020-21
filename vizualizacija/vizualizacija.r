@@ -100,7 +100,7 @@ Slovenija$StatisticnaRegija <- gsub('Spodnjeposavska', 'Posavska', Slovenija$Sta
 stanovanja.brez.os.infra.2011 <- filter(stanovanja.brez.os.infra, Leto==2011) #vzamemo podatke samo za 1 leto
 
 zemljevid.stanovanja.brez.os.infra.2011 <- ggplot() +
-  geom_polygon(data = right_join(stanovanja.brez.os.infra.2011,Slovenija, by = "StatisticnaRegija"),
+  geom_polygon(data = right_join(stanovanja.brez.os.infra.2011, Slovenija, by = "StatisticnaRegija"),
                aes(x = long, y = lat, group = group, fill = DelezVOdstotkih))+
   xlab("") + 
   ylab("") + 
