@@ -1,4 +1,3 @@
-library(shinythemes)
 
 
 shinyServer(function(input, output) {
@@ -21,7 +20,7 @@ shinyServer(function(input, output) {
     podatki1 <- dokoncana.stanovanja.st.in.povrsina %>% filter(StatisticnaRegija==input$regija)
     print(ggplot(podatki1, aes(x=Leto))) +
       geom_line(aes(y=PovprecnaPovrsina_m2), size=1, color="blue") +
-      scale_x_continuous(breaks=seq(2010, 2018, 1)) +
+      scale_x_continuous(breaks=seq(2010, 2019, 1)) +
       scale_y_continuous(breaks = seq(25, 250, 25), 
                          sec.axis = sec_axis(~./50, name = "Število dokončanih stanovanj na 1000 prebivalcev")) +
       geom_col(aes(y=StDokoncanihStanovanjNa1000Prebivalcev*50), size=1, col="red", alpha=I(0)) +

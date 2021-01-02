@@ -1,10 +1,5 @@
 # 3. faza: Vizualizacija podatkov
 
-source('lib/libraries.r', encoding = 'UTF-8')
-source("uvoz/uvoz.r", encoding = 'UTF-8')
-
-
-
 ##1
 #PRIPRAVIM TABELO ZA RISANJE TORTNEGA DIAGRAMA
 
@@ -91,4 +86,41 @@ graf_gradb.dela.in.arh.proj <- gradb.dela.in.arh.proj %>% ggplot(aes(x=Leto)) +
   theme_classic()
 #vprasi kako bi vsako y os dal svoje barve da je ena modra druga rdeča
 
+
+##5
+#ZEMLJEVID
+
+Slovenija <- uvozi.zemljevid("http://biogeo.ucdavis.edu/data/gadm2.8/shp/SVN_adm_shp.zip",
+                             "SVN_adm1", encoding="windows-1250") %>% fortify()
+colnames(Slovenija)[12]<-'StatisticnaRegija'  #preimenujemo stolpec
+Slovenija$StatisticnaRegija <- gsub('Notranjsko-kraška', 'Primorsko-notranjska', Slovenija$StatisticnaRegija)
+Slovenija$StatisticnaRegija <- gsub('Spodnjeposavska', 'Posavska', Slovenija$StatisticnaRegija)
+#zamenjali smo stara imena s pravimi
+
+stanovanja.brez.os.infra.2011 <- filter(stanovanja.brez.os.infra, Leto==2011) #vzamemo podatke samo za 1 leto
+
+zemljevid.stanovanja.brez.os.infra.2011 <- ggplot() +
+  geom_polygon(data = right_join(stanovanja.brez.os.infra.2011,Slovenija, by = "StatisticnaRegija"),
+               aes(x = long, y = lat, group = group, fill = DelezVOdstotkih))+
+  xlab("") + 
+  ylab("") + 
+  ggtitle("Naseljena stanovanja brez osnovne infrastrukture v letu 2011") + 
+  theme(axis.title=element_blank(), axis.text=element_blank(), 
+        axis.ticks=element_blank(), panel.background = element_blank()) + 
+  scale_fill_gradient(low = '#FCDADA', high='#970303', limits=c(0,10)) +
+  labs(fill="Delež po regijah")
+
+
+stanovanja.brez.os.infra.2018 <- filter(stanovanja.brez.os.infra, Leto==2018) #vzamemo podatke samo za 1 leto
+
+zemljevid.stanovanja.brez.os.infra.2018 <- ggplot() +
+  geom_polygon(data = right_join(stanovanja.brez.os.infra.2018,Slovenija, by = "StatisticnaRegija"),
+               aes(x = long, y = lat, group = group, fill = DelezVOdstotkih))+
+  xlab("") + 
+  ylab("") + 
+  ggtitle("Naseljena stanovanja brez osnovne infrastrukture v letu 2018") + 
+  theme(axis.title=element_blank(), axis.text=element_blank(), 
+        axis.ticks=element_blank(), panel.background = element_blank()) + 
+  scale_fill_gradient(low = '#FCDADA', high='#970303', limits=c(0,10)) +
+  labs(fill="Delež po regijah")
 

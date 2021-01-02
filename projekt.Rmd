@@ -89,41 +89,48 @@ source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
 
-Prvi graf prikazuje deleže izdanih gradbenih dovoljenj po statističnih regija za mesec september. Iz podatkov o izdanih gradbenih dovoljenjih lahko zelo na grobo napovemo, kaj se bo z fradnjo dogajalo v bližnji prihodnosti, saj večina stavb, za katere se pridobi gradbeno dovoljenje nazadnje dočaka tudi izgradnjo. 
-Vidimo lahko, da se daleč najmanj gradi oziroma se bo gradilo v Obalno-kraški regiji, kar je slabo za razvoj tega območja. največ se bo gradilov Jugovzhodni Sloveniji in na Savinjskem, kar je zelo pozitivno za prihodnji razvoj regij. 
-
 ```{r graf1, echo=FALSE, fig.align='center'}
 graf_tortni
 ```
 
+Prvi graf prikazuje deleže izdanih gradbenih dovoljenj po statističnih regija za mesec september. Iz podatkov o izdanih gradbenih dovoljenjih lahko zelo na grobo napovemo, kaj se bo z fradnjo dogajalo v bližnji prihodnosti, saj večina stavb, za katere se pridobi gradbeno dovoljenje nazadnje dočaka tudi izgradnjo. 
+Vidimo lahko, da se daleč najmanj gradi oziroma se bo gradilo v Obalno-kraški regiji, kar je slabo za razvoj tega območja. največ se bo gradilov Jugovzhodni Sloveniji in na Savinjskem, kar je zelo pozitivno za prihodnji razvoj regij. 
 
-Spodnji graf kaže indekse stroškov dela, materiala in skupnih gradbenih stroškov. 
-Večino časa je strošek dela najvišji (višji kot strošek materiala in posledično skupni stroški), z izjemo med leti 2013 in 2015, ko se je gradbeništvo znašlo v največji krizi v zadnjem desetletju. Kriza se začne kazati že leta 2011, kar sovpada z začetkom nižanja stroškov gradbenih del. Material se v tem obdobju ne poceni, zanimivo pa je dejstvo, da se material poceni v letu 2020, podatke katerega nisem vključil, saj niso na voljo vsi potrebni podatki (zadnje četrtletje še ni na voljo). Razlog za cenitev stroškov materiala pa je predvsem v vedno manj kvalitetni gradnji, saj vsi investitorji razmišljajo samo o svojem zaslužku, ki ga večajo na račun nižje kakovosti gradnje. 
 
 ```{r graf2, echo=FALSE, fig.align='center'}
 graf_stroski
 ```
 
-V tretjem grafu sem primerjal indeks neto plače in delež naseljenih stanovanj brez osnovne infrastrukture po regijah Slovenije. Analizo sem naredil za 3 ločena leta in v vseh primerih je lepo viden trend, ki ga prikazuje tudi padajoča premica, kar pomeni, da je v regijah, kjer so plače nižje, tudi delež stanovanj brez osnovne infrastrukture višji. Rezultati in ugotovitve so pričakovani, saj je najvišji delež takih stanovanj v Pomurski regiji, kjer so tudi plače v popvrečju najnižje. Na drugi strani izstopa Gorenjska, kjer so plače v vseh 3 letih v bližini povprečja Slovenije, delež omenjenih stanovanj pa dalež najnižji. Razlog za to je predvsem ta, da v tej regiji živi veliko ljudi, ki se na delo vozijo v Ljubljano in imajo zato v povprečju boljše tudi življenske pogoje.
+Zgornji graf kaže indekse stroškov dela, materiala in skupnih gradbenih stroškov. 
+Večino časa je strošek dela najvišji (višji kot strošek materiala in posledično skupni stroški), z izjemo med leti 2013 in 2015, ko se je gradbeništvo znašlo v največji krizi v zadnjem desetletju. Kriza se začne kazati že leta 2011, kar sovpada z začetkom nižanja stroškov gradbenih del. Material se v tem obdobju ne poceni, zanimivo pa je dejstvo, da se material poceni v letu 2020, podatke katerega nisem vključil, saj niso na voljo vsi potrebni podatki (zadnje četrtletje še ni na voljo). Razlog za cenitev stroškov materiala pa je predvsem v vedno manj kvalitetni gradnji, saj vsi investitorji razmišljajo samo o svojem zaslužku, ki ga večajo na račun nižje kakovosti gradnje. 
+
+
+```{r zemljevid1, echo=FALSE, fig.align='center'}
+zemljevid.stanovanja.brez.os.infra.2011
+```
+Zgornji zemljevid nam prikazuje delež naseljenih stanovanj brez osnovne infrastrukture v letu 2011. Podatke bomo natančneje analizirali in primerjali v naslednjem grafu.
+
+
+```{r zemljevid2, echo=FALSE, fig.align='center'}
+zemljevid.stanovanja.brez.os.infra.2018
+```
+Sedaj si poglejmo še podatke za leto 2018.Hitro opazimo, da je stanje v nekaterih regijah boljše, kar je najvrjetneje posledica dobrega gospodarskega stanja in rasti države v tem obdobju. 
+
 
 
 ```{r graf3, echo=FALSE, fig.align='center'}
 graf_infra.in.place
 ```
 
+V tretjem grafu sem primerjal indeks neto plače in delež naseljenih stanovanj brez osnovne infrastrukture po regijah Slovenije. Analizo sem naredil za 3 ločena leta in v vseh primerih je lepo viden trend, ki ga prikazuje tudi padajoča premica, kar pomeni, da je v regijah, kjer so plače nižje, tudi delež stanovanj brez osnovne infrastrukture višji. Rezultati in ugotovitve so pričakovani, saj je najvišji delež takih stanovanj v Pomurski regiji, kjer so tudi plače v popvrečju najnižje. Na drugi strani izstopa Gorenjska, kjer so plače v vseh 3 letih v bližini povprečja Slovenije, delež omenjenih stanovanj pa dalež najnižji. Razlog za to je predvsem ta, da v tej regiji živi veliko ljudi, ki se na delo vozijo v Ljubljano in imajo zato v povprečju boljše tudi življenske pogoje. Zelo nazorno se tudi kaže dejstvo, da so od leta 2011 do 2018 tako plače kot tudi življenske razmere v povprečju v vseh regijah boljše. 
+
+
 
 ```{r graf4, echo=FALSE, fig.align='center'}
 graf_gradb.dela.in.arh.proj
 ```
 
-
-Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
-
-```{r zemljevid, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-#tm_shape(merge(zemljevid, povprecja, by.x="OB_UIME", by.y="obcina")) +
-#  tm_polygons("povprecje", title="Povprečje") +
-#  tm_layout(title="Povprečno število otrok v družini")
-```
+Zgornji graf je sestavljen iz linijskega, ki prikazuje indekse in stolpičnega, ki prikazuje vrednost opravljenih gradbenih del. Storitev arhitekturnega projektiranja je tesno povezana s sektorjem gradbeništva. Opazimo, da ko gre gradbeništvu dobro (vrednost opravljenih gradbenih del v posameznem letu je večja), je tudi indeks cen arhitekturnega projektiranja višji, kar pomeni, da je cena te storitve višja. To je seveda pričakovano, saj večja aktivbost v gradbeništvu pomeni večje povpraševanje po arhitektih, ki posledično dvignejo cene svojih storitev, da se ponudba izenači s povpraševanjem.
 
 ***
 
@@ -135,12 +142,16 @@ Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
 
 
 
-
-
 ***
 
-#Shiny
+# Shiny
 
 ```{r shiny, echo=FALSE}
 shinyAppDir("shiny", options=list(width="100%", height=600))
 ```
+
+V prvi simulaciji, primerjam površino stanovanj, za katere so bila izdana gradbena dovoljenja, s številom le-teh po statističnih regijah. Opazim, da v obdobju krize v gradbenem sektorju (leta 2010 do 2014) močno pade tako površina kot tudi število izdanih gradbenih dovoljenj, kar kaže na manjšo aktivnost v gradbeništvu v tem obdobju. Po krizi se stvari nekoliko spremenijo in satnovanj se gradi vse več, vendar skupna površina le-teh ne narašča tako kot bi morda pričakovali, oziroma ponekod v kakšnem letu celo pade. Razlog za to je predvsem vse večje število stanovanj, saj je povpraševanje po teh vedno večje, a vse manjša kvadratura le-teh zaradi prostorske stiske, s katero se in se bomo soočali v Sloveniji.
+
+V drugi simulaciji je za vsako regijo posebej prikazano število dokončanih stanovanj na 1000 prebivalcev in povprečna površina le-teh skozi leta. Ob pregledu opazimo, da se v nekaterih regijah povprečna površina niža, veča pa se število stanovanj (npr. Obalno-kraška, Osrednjeslovenska, Pomurska, Jugovzhodna Slovenija in nekatere druge), kar smo tudi opazili v prvi simulaciji na podlagi izdanih gradbenih dovoljenj. Nekaj je sicer tudi regij, kjer tega trenda ni moč zaslediti, a v povprečju prevlada opaženo. S tem lahko tudi dodatno podkrepimo začetno napoved, kje se bo v prihodnosti največ oziroma najmanj gradilo, saj smo videli, da dejanska gradnja dobro sovpada z izdanimi gradbenimi dovoljenji (morda le zamuja nekaj let, a za okvirno napoved to ni bistvenega pomena).
+
+
