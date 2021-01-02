@@ -1,0 +1,123 @@
+"Ocena dokonèanih stanovanj - izbrani kazalniki, po statistiènih regijah, Slovenija, letno"
+
+"STATISTIÈNA REGIJA";"LETO";"Število dokonèanih stanovanj na 1000 prebivalcev";"Povpreèna površina dokonèanih stanovanj [m2]"
+"Pomurska";"2010";2.7;137
+"Pomurska";"2011";2.3;149
+"Pomurska";"2012";2.0;165
+"Pomurska";"2013";1.9;151
+"Pomurska";"2014";1.8;137
+"Pomurska";"2015";1.6;115
+"Pomurska";"2016";2.6;120
+"Pomurska";"2017";1.7;126
+"Pomurska";"2018";1.7;124
+"Pomurska";"2019";2.2;109
+"Podravska";"2010";2.8;143
+"Podravska";"2011";3.0;142
+"Podravska";"2012";2.8;126
+"Podravska";"2013";1.7;141
+"Podravska";"2014";1.6;138
+"Podravska";"2015";1.3;148
+"Podravska";"2016";1.6;140
+"Podravska";"2017";1.6;148
+"Podravska";"2018";2.0;139
+"Podravska";"2019";2.0;134
+"Koroška";"2010";2.9;108
+"Koroška";"2011";1.2;184
+"Koroška";"2012";1.1;168
+"Koroška";"2013";1.4;158
+"Koroška";"2014";1.7;119
+"Koroška";"2015";1.1;142
+"Koroška";"2016";1.1;159
+"Koroška";"2017";1.2;148
+"Koroška";"2018";1.0;131
+"Koroška";"2019";0.9;147
+"Savinjska";"2010";3.8;121
+"Savinjska";"2011";3.3;122
+"Savinjska";"2012";2.3;139
+"Savinjska";"2013";2.6;128
+"Savinjska";"2014";1.4;163
+"Savinjska";"2015";1.4;141
+"Savinjska";"2016";1.3;148
+"Savinjska";"2017";1.4;139
+"Savinjska";"2018";1.4;147
+"Savinjska";"2019";1.6;138
+"Zasavska";"2010";0.7;166
+"Zasavska";"2011";1.5;125
+"Zasavska";"2012";0.5;171
+"Zasavska";"2013";0.9;107
+"Zasavska";"2014";0.8;171
+"Zasavska";"2015";0.9;179
+"Zasavska";"2016";1.3;149
+"Zasavska";"2017";1.0;143
+"Zasavska";"2018";0.7;137
+"Zasavska";"2019";0.5;165
+"Posavska";"2010";2.7;139
+"Posavska";"2011";2.3;152
+"Posavska";"2012";1.8;135
+"Posavska";"2013";1.7;143
+"Posavska";"2014";1.4;149
+"Posavska";"2015";1.4;131
+"Posavska";"2016";1.6;146
+"Posavska";"2017";2.0;135
+"Posavska";"2018";1.3;159
+"Posavska";"2019";1.3;141
+"Jugovzhodna Slovenija";"2010";2.4;129
+"Jugovzhodna Slovenija";"2011";1.8;164
+"Jugovzhodna Slovenija";"2012";1.8;141
+"Jugovzhodna Slovenija";"2013";1.6;166
+"Jugovzhodna Slovenija";"2014";1.5;161
+"Jugovzhodna Slovenija";"2015";2.0;157
+"Jugovzhodna Slovenija";"2016";1.5;175
+"Jugovzhodna Slovenija";"2017";2.4;147
+"Jugovzhodna Slovenija";"2018";1.8;163
+"Jugovzhodna Slovenija";"2019";1.8;127
+"Osrednjeslovenska";"2010";3.4;118
+"Osrednjeslovenska";"2011";2.9;116
+"Osrednjeslovenska";"2012";1.4;162
+"Osrednjeslovenska";"2013";1.1;169
+"Osrednjeslovenska";"2014";1.7;130
+"Osrednjeslovenska";"2015";1.2;145
+"Osrednjeslovenska";"2016";1.1;175
+"Osrednjeslovenska";"2017";1.3;151
+"Osrednjeslovenska";"2018";1.3;151
+"Osrednjeslovenska";"2019";1.7;145
+"Gorenjska";"2010";3.4;151
+"Gorenjska";"2011";2.4;153
+"Gorenjska";"2012";1.8;165
+"Gorenjska";"2013";2.3;129
+"Gorenjska";"2014";1.4;166
+"Gorenjska";"2015";1.2;174
+"Gorenjska";"2016";1.2;163
+"Gorenjska";"2017";1.5;131
+"Gorenjska";"2018";1.2;169
+"Gorenjska";"2019";1.4;156
+"Primorsko-notranjska";"2010";3.3;141
+"Primorsko-notranjska";"2011";3.5;121
+"Primorsko-notranjska";"2012";2.3;172
+"Primorsko-notranjska";"2013";2.1;164
+"Primorsko-notranjska";"2014";1.5;158
+"Primorsko-notranjska";"2015";1.6;159
+"Primorsko-notranjska";"2016";1.2;154
+"Primorsko-notranjska";"2017";1.2;156
+"Primorsko-notranjska";"2018";1.3;162
+"Primorsko-notranjska";"2019";1.5;131
+"Goriška";"2010";3.2;123
+"Goriška";"2011";2.0;150
+"Goriška";"2012";2.4;139
+"Goriška";"2013";1.6;150
+"Goriška";"2014";1.5;164
+"Goriška";"2015";1.6;150
+"Goriška";"2016";1.9;152
+"Goriška";"2017";1.5;169
+"Goriška";"2018";1.6;140
+"Goriška";"2019";1.2;155
+"Obalno-kraška";"2010";3.0;130
+"Obalno-kraška";"2011";3.1;109
+"Obalno-kraška";"2012";4.8;82
+"Obalno-kraška";"2013";1.6;147
+"Obalno-kraška";"2014";1.0;159
+"Obalno-kraška";"2015";1.1;135
+"Obalno-kraška";"2016";1.9;126
+"Obalno-kraška";"2017";0.9;142
+"Obalno-kraška";"2018";1.3;143
+"Obalno-kraška";"2019";1.4;126

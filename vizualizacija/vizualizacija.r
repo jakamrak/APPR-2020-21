@@ -17,14 +17,13 @@ tortni <- gradb.dovoljenja.sept %>%
 
 graf_tortni <- ggplot(tortni) +
   aes(x="", y=delezi, fill=StatisticnaRegija) +
-  geom_col(width=1) +
+  geom_col(width=1, color="white") +
   coord_polar(theta="y") + xlab("") + ylab("") +
   geom_text(aes(y=lab.ypos, label=paste0(round(delezi, 2), "%")),
             x=1.3, color="white", size=2.5) +
   labs(title="Deleži izdanih gradbenih dovoljenj po regijah v mesecu septembru") +
   guides(fill=guide_legend("Statistična regija")) +
-  theme(axis.text=element_blank())
-
+  theme_void()
 
 
 ##2
@@ -69,38 +68,27 @@ graf_infra.in.place <- infra.in.place %>%
   facet_grid(. ~ Leto) +
   geom_smooth(method="lm", se=FALSE)  #podatki so razprseni a vidi se da pri nizji 
                                       #placi je delež stanovanj brez osnovne infra vecji in obratno
-  
+ 
 
 ##4
 #PRIPRAVIM TABELO ZA RISANJE 
 
 gradb.dela.in.arh.proj <- indeks.cen.arh.proj %>% 
   right_join(vrednost.gradb.del, by = "Leto") 
-  #pivot_longer(2:3,names_to = "TipMeritve",values_to = "Meritev")
 
-#Stolpcini diagram, ki kaže povezanost vrednosti opravljenih gradb del in cen arhitekturnega projektiranja
-
-#graf_gradb.dela.in.arh.proj <- gradb.dela.in.arh.proj %>%
-#  ggplot(aes(x=Leto, fill=TipMeritve)) +
-#  geom_line(aes(y=PovprecenIndeks))
-#plot(graf_gradb.dela.in.arh.proj)
-#
-ggplot(gradb.dela.in.arh.proj, aes(x = Leto)) + 
-  geom_col(aes(y = PovprecenIndeks), size = 1) +
-  geom_line(aes(y= Vrednost_1000EUR), size = 1, color="red") +
+# diagram, ki kaže povezanost vrednosti opravljenih gradb del in cen arhitekturnega projektiranja
+ 
+graf_gradb.dela.in.arh.proj <- gradb.dela.in.arh.proj %>% ggplot(aes(x=Leto)) +
+  geom_line(aes(y=PovprecenIndeks), size = 1, color="red") +
   scale_x_continuous(breaks=seq(2010, 2018, 1)) +
-  scale_y_continuous(sec.axis = sec_axis(~./15000, name = "Indeks cen arhitekturnega projektiranja"))+
-  xlab("Leto") +
-  ylab("Vrednost [1000EUR]")
+  scale_y_continuous(breaks=seq(0, 150, 25), 
+                     sec.axis = sec_axis(~.*17000, name = "Vrednost gradbenih del [1000EUR]"))+
+  geom_col(aes(y = Vrednost_1000EUR/17000), size = 1, col="darkblue", fill="white", alpha=I(0)) +
+  xlab("Leto") + ylab("Indeks cen arhitekturnega projektiranja") +
+  labs(title="Primerjava indeksa cen arhitekturnega projektiranja in vrednosti 
+       opravljenih gradbenih del") +
+  theme(axis.title.y = element_text(color="red")) + #theme_clasic() ga povozi
+  theme_classic()
+#vprasi kako bi vsako y os dal svoje barve da je ena modra druga rdeča
 
 
-
-ggplot(gradb.dela.in.arh.proj, aes(x=Vrednost_1000EUR, y=PovprecenIndeks, shape=Leto))+
-  geom_point(size=2)+ 
-  geom_smooth(method="lm")+
-  xlab("Vrednost opravljenih gradbenih del [1000EUR]") +
-  ylab("Indeks cen arhitekturnega projektiranja")
-
-
-
-  

@@ -16,7 +16,22 @@ colnames(gradbena.dovoljenja.letno.zacetna) <- stolpci.dovoljenja
 #zdruzimo po regijah in letih
 gradbena.dovoljenja.letno <- gradbena.dovoljenja.letno.zacetna %>% 
   group_by(StatisticnaRegija, Leto) %>% 
-  summarise(SteviloStavb=sum(SteviloStavb), Povrsina_m2=sum(PovrsinaStavb))
+  summarise(SteviloStavb=sum(SteviloStavb), Povrsina_1000m2=sum(PovrsinaStavb)/1000)
+
+
+#DOKONČANA STANOVANJA NA 1000 PREBIVALCEV IN POVPREČNA POVRŠINA
+
+#preberemo datoteko
+dokoncana.stanovanja.st.in.povrsina <- read_csv2("podatki/dokoncana-stanovanja-in-povrsina.csv",
+                                                 locale = locale(encoding = "windows-1250"), skip = 2) %>% as.data.frame()
+
+#definirao nova imena stolpcev
+stolpci.dokoncana.stanovanja.st.in.povrsina <- c("StatisticnaRegija", "Leto", "StDokoncanihStanovanjNa1000Prebivalcev", "PovprecnaPovrsina_m2")
+
+#preimenujemo stolpce
+colnames(dokoncana.stanovanja.st.in.povrsina) <- stolpci.dokoncana.stanovanja.st.in.povrsina
+
+dokoncana.stanovanja.st.in.povrsina$StDokoncanihStanovanjNa1000Prebivalcev <- as.numeric(dokoncana.stanovanja.st.in.povrsina$StDokoncanihStanovanjNa1000Prebivalcev)
 
 
 #INDEKS CEN GRADBENIH STROŠKOV

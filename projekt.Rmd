@@ -108,6 +108,9 @@ graf_infra.in.place
 ```
 
 
+```{r graf4, echo=FALSE, fig.align='center'}
+graf_gradb.dela.in.arh.proj
+```
 
 
 Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
@@ -126,20 +129,14 @@ Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
 #source("analiza/analiza.r", encoding="UTF-8")
 ```
 
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
 
-```{r graf, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-#ggplot(inner_join(obcine, data.frame(obcina=names(skupine),
-#                                     skupina=factor(skupine)), by="obcina")
-#, aes(x=povrsina, y=naselja, color=skupina, size=prebivalci/1000)) + geom_point() +
-#  ggtitle("Število naselij glede na površino občine") +
-#  xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
-#  guides(color=guide_legend(title="Skupina"),
-#         size=guide_legend(title="Prebivalci (* 1000)"))
-```
+
+
 
 ***
 
-```{r shiny}
-#shinyAppDir("shiny", options=list(width="100%", height=600))
+#Shiny
+
+```{r shiny, echo=FALSE}
+shinyAppDir("shiny", options=list(width="100%", height=600))
 ```
