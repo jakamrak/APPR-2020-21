@@ -115,7 +115,7 @@ zemljevid.stanovanja.brez.os.infra.2011 <- ggplot() +
 
 #tabela za 2018
 stanovanja.brez.os.infra.2018 <- filter(stanovanja.brez.os.infra, Leto==2018) #vzamemo podatke samo za 1 leto
-Encoding(stanovanja.brez.os.infra.2018) <- "windows-1250"
+
 
 #zemljevid za 2018
 zemljevid.stanovanja.brez.os.infra.2018 <- ggplot() +
