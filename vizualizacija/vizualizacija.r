@@ -111,9 +111,9 @@ zemljevid.stanovanja.brez.os.infra.2011 <- ggplot() +
   ylab("") + 
   ggtitle("Naseljena stanovanja brez osnovne infrastrukture v letu 2011") + 
   theme(axis.title=element_blank(), axis.text=element_blank(), 
-        axis.ticks=element_blank(), panel.background = element_blank()) + 
+        axis.ticks=element_blank(), panel.background = element_blank()) +
   scale_fill_gradient(low = '#FCDADA', high='#970303', limits=c(0,10)) +
-  labs(fill="Delež po regijah")
+  labs(fill="Delež po regijah v %")
 
 #tabela za 2018
 stanovanja.brez.os.infra.2018 <- filter(stanovanja.brez.os.infra, Leto==2018) #vzamemo podatke samo za 1 leto
@@ -129,5 +129,5 @@ zemljevid.stanovanja.brez.os.infra.2018 <- ggplot() +
   theme(axis.title=element_blank(), axis.text=element_blank(), 
         axis.ticks=element_blank(), panel.background = element_blank()) + 
   scale_fill_gradient(low = '#FCDADA', high='#970303', limits=c(0,10)) +
-  labs(fill="Delež po regijah")
+  labs(fill="Delež po regijah v %")
 

@@ -93,8 +93,8 @@ source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 graf_tortni
 ```
 
-Prvi graf prikazuje deleže izdanih gradbenih dovoljenj po statističnih regija za mesec september. Iz podatkov o izdanih gradbenih dovoljenjih lahko zelo na grobo napovemo, kaj se bo z fradnjo dogajalo v bližnji prihodnosti, saj večina stavb, za katere se pridobi gradbeno dovoljenje nazadnje dočaka tudi izgradnjo. 
-Vidimo lahko, da se daleč najmanj gradi oziroma se bo gradilo v Obalno-kraški regiji, kar je slabo za razvoj tega območja. največ se bo gradilov Jugovzhodni Sloveniji in na Savinjskem, kar je zelo pozitivno za prihodnji razvoj regij. 
+Prvi graf prikazuje deleže izdanih gradbenih dovoljenj po statističnih regija za mesec september. Iz podatkov o izdanih gradbenih dovoljenjih lahko zelo na grobo napovemo, kaj se bo z gradnjo dogajalo v bližnji prihodnosti, saj večina stavb, za katere se pridobi gradbeno dovoljenje nazadnje dočaka tudi izgradnjo. 
+Vidimo lahko, da se daleč najmanj gradi oziroma se bo gradilo v Obalno-kraški regiji, kar je slabo za razvoj tega območja. Največ se bo gradilo v Jugovzhodni Sloveniji in na Savinjskem, kar je zelo pozitivno za prihodnji razvoj regij. 
 
 
 ```{r graf2, echo=FALSE, fig.align='center'}
@@ -114,7 +114,7 @@ Zgornji zemljevid nam prikazuje delež naseljenih stanovanj brez osnovne infrast
 ```{r zemljevid2, echo=FALSE, fig.align='center'}
 zemljevid.stanovanja.brez.os.infra.2018
 ```
-Sedaj si poglejmo še podatke za leto 2018.Hitro opazimo, da je stanje v nekaterih regijah boljše, kar je najvrjetneje posledica dobrega gospodarskega stanja in rasti države v tem obdobju. 
+Sedaj si poglejmo še podatke za leto 2018. Hitro opazimo, da je stanje v nekaterih regijah boljše, kar je najvrjetneje posledica dobrega gospodarskega stanja in rasti države v tem obdobju. 
 
 
 
@@ -130,7 +130,7 @@ V tretjem grafu sem primerjal indeks neto plače in delež naseljenih stanovanj 
 graf_gradb.dela.in.arh.proj
 ```
 
-Zgornji graf je sestavljen iz linijskega, ki prikazuje indekse in stolpičnega, ki prikazuje vrednost opravljenih gradbenih del. Storitev arhitekturnega projektiranja je tesno povezana s sektorjem gradbeništva. Opazimo, da ko gre gradbeništvu dobro (vrednost opravljenih gradbenih del v posameznem letu je večja), je tudi indeks cen arhitekturnega projektiranja višji, kar pomeni, da je cena te storitve višja. To je seveda pričakovano, saj večja aktivbost v gradbeništvu pomeni večje povpraševanje po arhitektih, ki posledično dvignejo cene svojih storitev, da se ponudba izenači s povpraševanjem.
+Zgornji graf je sestavljen iz linijskega, ki prikazuje indekse in stolpičnega, ki prikazuje vrednost opravljenih gradbenih del. Storitev arhitekturnega projektiranja je tesno povezana s sektorjem gradbeništva. Opazimo, da ko gre gradbeništvu dobro (vrednost opravljenih gradbenih del v posameznem letu je večja), je tudi indeks cen arhitekturnega projektiranja višji, kar pomeni, da je cena te storitve višja. To je seveda pričakovano, saj večja aktivnost v gradbeništvu pomeni večje povpraševanje po arhitektih, ki posledično dvignejo cene svojih storitev, da se ponudba izenači s povpraševanjem.
 
 ***
 
@@ -155,7 +155,7 @@ S pomočjo polinoma 2. stopnje sem poskusil napovedati, kaj se bo s stroški gra
 shinyAppDir("shiny", options=list(width="100%", height=600))
 ```
 
-V prvi simulaciji, primerjam površino stanovanj, za katere so bila izdana gradbena dovoljenja, s številom le-teh po statističnih regijah. Opazim, da v obdobju krize v gradbenem sektorju (leta 2010 do 2014) močno pade tako površina kot tudi število izdanih gradbenih dovoljenj, kar kaže na manjšo aktivnost v gradbeništvu v tem obdobju. Po krizi se stvari nekoliko spremenijo in satnovanj se gradi vse več, vendar skupna površina le-teh ne narašča tako kot bi morda pričakovali, oziroma ponekod v kakšnem letu celo pade. Razlog za to je predvsem vse večje število stanovanj, saj je povpraševanje po teh vedno večje, a vse manjša kvadratura le-teh zaradi prostorske stiske, s katero se in se bomo soočali v Sloveniji.
+V prvi simulaciji primerjam površino stanovanj, za katere so bila izdana gradbena dovoljenja, s številom le-teh po statističnih regijah. Opazim, da v obdobju krize v gradbenem sektorju (leta 2010 do 2014) močno pade tako površina kot tudi število izdanih gradbenih dovoljenj, kar kaže na manjšo aktivnost v gradbeništvu v tem obdobju. Po krizi se stvari nekoliko spremenijo in satnovanj se gradi vse več, vendar skupna površina le-teh ne narašča tako kot bi morda pričakovali, oziroma ponekod v kakšnem letu celo pade. Razlog za to je predvsem vse večje število stanovanj, saj je povpraševanje po teh vedno večje, a vse manjša kvadratura le-teh zaradi prostorske stiske, s katero se in se bomo soočali v Sloveniji.
 
 V drugi simulaciji je za vsako regijo posebej prikazano število dokončanih stanovanj na 1000 prebivalcev in povprečna površina le-teh skozi leta. Ob pregledu opazimo, da se v nekaterih regijah povprečna površina niža, veča pa se število stanovanj (npr. Obalno-kraška, Osrednjeslovenska, Pomurska, Jugovzhodna Slovenija in nekatere druge), kar smo tudi opazili v prvi simulaciji na podlagi izdanih gradbenih dovoljenj. Nekaj je sicer tudi regij, kjer tega trenda ni moč zaslediti, a v povprečju prevlada opaženo. S tem lahko tudi dodatno podkrepimo začetno napoved, kje se bo v prihodnosti največ oziroma najmanj gradilo, saj smo videli, da dejanska gradnja dobro sovpada z izdanimi gradbenimi dovoljenji (morda le zamuja nekaj let, a za okvirno napoved to ni bistvenega pomena).
 
