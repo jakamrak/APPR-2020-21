@@ -27,8 +27,8 @@ shinyServer(function(input, output) {
       xlab("Leto") + ylab("Povprečna površina [m^2]") +
       labs(title = "Primerjava velikosti stanovanj in njihovega števila") +
       theme_classic() +
-      theme(axis.title.y.left = element_text(color="royalblue"),
-            axis.title.y.right = element_text(color="tomato4"))
+      theme(axis.title.y.left = element_text(color="royalblue", margin = margin(r = .3, unit = "cm")),
+            axis.title.y.right = element_text(color="tomato4", margin = margin(l = .3, unit = "cm")))
             
     
   })
