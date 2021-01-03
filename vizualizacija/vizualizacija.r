@@ -92,7 +92,7 @@ graf_gradb.dela.in.arh.proj <- gradb.dela.in.arh.proj %>% ggplot(aes(x=Leto)) +
 
 #pripravimo podatke za zemljevid
 Slovenija <- uvozi.zemljevid("http://biogeo.ucdavis.edu/data/gadm2.8/shp/SVN_adm_shp.zip",
-                             "SVN_adm1", encoding="windows-1250") %>% fortify()
+                             "SVN_adm1", encoding="UTF-8") %>% fortify()
 colnames(Slovenija)[12]<-'StatisticnaRegija'  #preimenujemo stolpec
 Slovenija$StatisticnaRegija <- gsub('Notranjsko-kraška', 'Primorsko-notranjska', Slovenija$StatisticnaRegija)
 Slovenija$StatisticnaRegija <- gsub('Spodnjeposavska', 'Posavska', Slovenija$StatisticnaRegija)
