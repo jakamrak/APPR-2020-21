@@ -137,9 +137,14 @@ Zgornji graf je sestavljen iz linijskega, ki prikazuje indekse in stolpičnega, 
 # Napredna analiza podatkov
 
 ```{r analiza}
-#source("analiza/analiza.r", encoding="UTF-8")
+source("analiza/analiza.r", encoding="UTF-8")
 ```
 
+```{r graf5, echo=FALSE, fig.align='center'}
+graf_regresija
+```
+
+S pomočjo polinoma 2. stopnje sem poskusil napovedati, kaj se bo s stroški gradbenega meteriala zgodilo v letu 2020 iz podatkov za leta od 2016 do 2019. Napoved kaže na znižanje stroškov gradbenega materiala, kar je tudi v skladu z dejanskimi razmerami, ki pa jih nisem mogel uporabiti v nalogi, saj so podatki podani za četrtletja in za zadnje četrtletje še nimam podatka. Tako lahko vidimo, da bo strošek material v prihodnje nižji, kar je kot sem že omenil, razlog manj kakovostne gradnje.
 
 
 ***
@@ -154,4 +159,7 @@ V prvi simulaciji, primerjam površino stanovanj, za katere so bila izdana gradb
 
 V drugi simulaciji je za vsako regijo posebej prikazano število dokončanih stanovanj na 1000 prebivalcev in povprečna površina le-teh skozi leta. Ob pregledu opazimo, da se v nekaterih regijah povprečna površina niža, veča pa se število stanovanj (npr. Obalno-kraška, Osrednjeslovenska, Pomurska, Jugovzhodna Slovenija in nekatere druge), kar smo tudi opazili v prvi simulaciji na podlagi izdanih gradbenih dovoljenj. Nekaj je sicer tudi regij, kjer tega trenda ni moč zaslediti, a v povprečju prevlada opaženo. S tem lahko tudi dodatno podkrepimo začetno napoved, kje se bo v prihodnosti največ oziroma najmanj gradilo, saj smo videli, da dejanska gradnja dobro sovpada z izdanimi gradbenimi dovoljenji (morda le zamuja nekaj let, a za okvirno napoved to ni bistvenega pomena).
 
+***
+# Zaključek
 
+V splošnem vidimo, da gre gradbeništvu v zadnjih letih, ko se je pobralo po krizi (po 2014) dokaj dobro in v kratkem skrbi za novo krizo v sektorju ni, saj se še zmeraj veliko gradi in povpraševanje predvsem po stanovanjih je vse večje. Edini minus, ki ga vidim je v poslovnih stavbah, ki jih bo v prihodnje vse manj, na račun dela od doma, ki ga bo po mojem mnenju v prihodnosti vse več. Nekoliko zaskrbljujoče so razmere v Obalno-kraški regiji, ki velaja za eno izmed bolj priljubljenih krajev za bivanje, a se tukaj v zadnjih letih gradi daleč najmanj v primerjavi z ostalimi regijami in to je lahko negativno za nadaljni razvoj občin v Obalno-kraški regiji (predvsem obalnih-Izola, Koper, Piran in Ankaran).
