@@ -82,9 +82,12 @@ graf_gradb.dela.in.arh.proj <- gradb.dela.in.arh.proj %>% ggplot(aes(x=Leto)) +
   xlab("Leto") + ylab("Indeks cen arhitekturnega projektiranja") +
   labs(title="Primerjava indeksa cen arhitekturnega projektiranja in vrednosti 
        opravljenih gradbenih del") +
-  theme(axis.title.y = element_text(color="red")) + #theme_clasic() ga povozi
-  theme_classic()
-#vprasi kako bi vsako y os dal svoje barve da je ena modra druga rdeča
+  theme_classic() +
+  theme(axis.title.y.left = element_text(color="red"),
+        axis.title.y.right = element_text(color="darkblue"))
+  
+  
+
 
 
 ##5

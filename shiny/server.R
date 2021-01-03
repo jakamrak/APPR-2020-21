@@ -19,14 +19,16 @@ shinyServer(function(input, output) {
   output$drugigraf <- renderPlot({
     podatki1 <- dokoncana.stanovanja.st.in.povrsina %>% filter(StatisticnaRegija==input$regija)
     print(ggplot(podatki1, aes(x=Leto))) +
-      geom_line(aes(y=PovprecnaPovrsina_m2), size=1, color="blue") +
+      geom_line(aes(y=PovprecnaPovrsina_m2), size=1, color="royalblue") +
       scale_x_continuous(breaks=seq(2010, 2019, 1)) +
-      scale_y_continuous(breaks = seq(25, 250, 25), 
+      scale_y_continuous(breaks = seq(25, 250, 25), limits=c(0, 260), 
                          sec.axis = sec_axis(~./50, name = "Število dokončanih stanovanj na 1000 prebivalcev")) +
-      geom_col(aes(y=StDokoncanihStanovanjNa1000Prebivalcev*50), size=1, col="red", alpha=I(0)) +
+      geom_col(aes(y=StDokoncanihStanovanjNa1000Prebivalcev*50), size=1, col="tomato4", alpha=I(0)) +
       xlab("Leto") + ylab("Povprečna površina [m^2]") +
       labs(title = "Primerjava velikosti stanovanj in njihovega števila") +
-      theme_classic()
+      theme_classic() +
+      theme(axis.title.y.left = element_text(color="royalblue"),
+            axis.title.y.right = element_text(color="tomato4"))
             
     
   })

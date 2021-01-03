@@ -57,7 +57,12 @@ Za projektno nalogo sem si izbral tematiko gradbeništva. Osredotočil se bom na
   - `Leto` - spremenljivka: leto meritve (število),
   - `Vrednost_1000EUR` - meritev: vrednost vseh opravljenih gradbenih del v posameznem letu meritve v Sloveniji (število).
   
-
+  8. [dokoncana.stanovanja.st.in.povrsina](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1906910S.px)- podatki o vrednosti opravljenih gradbenih del v posameznem letu (v 1000 EUR)
+  - `StatisticnaRegija` - spremenljivka: Regija (neurejen faktor),
+  - `Leto` - spremenljivka: leto meritve (število),
+  - `StDokoncanihStanovanjNa1000Prebivalcev` - meritev: število vseh dokončanih stanovanj ob koncu leta na 1000 prebivalcev (število).
+  - `PovprecnaPovrsina_m2` - meritev: povprečna površina stanovanj v tem letu (število).
+  
 
 ## Program
 

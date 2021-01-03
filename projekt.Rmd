@@ -77,7 +77,7 @@ Podatke, potrebne za analize sem uvozil iz SURS-a v obliki CSV, xlsx in json. Vs
   - `StatisticnaRegija` - spremenljivka: Regija (neurejen faktor),
   - `Leto` - spremenljivka: leto meritve (število),
   - `StDokoncanihStanovanjNa1000Prebivalcev` - meritev: število vseh dokončanih stanovanj ob koncu leta na 1000 prebivalcev (število).
-  - `PovprecnaPovrsina_m2` - meritev: povprečna površina stanovanj v tem letu (število),
+  - `PovprecnaPovrsina_m2` - meritev: povprečna površina stanovanj v tem letu (število).
   
 
 ***
