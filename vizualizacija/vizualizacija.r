@@ -90,6 +90,7 @@ graf_gradb.dela.in.arh.proj <- gradb.dela.in.arh.proj %>% ggplot(aes(x=Leto)) +
 ##5
 #ZEMLJEVID
 
+#pripravimo podatke za zemljevid
 Slovenija <- uvozi.zemljevid("http://biogeo.ucdavis.edu/data/gadm2.8/shp/SVN_adm_shp.zip",
                              "SVN_adm1", encoding="windows-1250") %>% fortify()
 colnames(Slovenija)[12]<-'StatisticnaRegija'  #preimenujemo stolpec
@@ -97,8 +98,10 @@ Slovenija$StatisticnaRegija <- gsub('Notranjsko-kraška', 'Primorsko-notranjska'
 Slovenija$StatisticnaRegija <- gsub('Spodnjeposavska', 'Posavska', Slovenija$StatisticnaRegija)
 #zamenjali smo stara imena s pravimi
 
+#tabela za leto 2011
 stanovanja.brez.os.infra.2011 <- filter(stanovanja.brez.os.infra, Leto==2011) #vzamemo podatke samo za 1 leto
 
+#zemljevid za 2011
 zemljevid.stanovanja.brez.os.infra.2011 <- ggplot() +
   geom_polygon(data = right_join(stanovanja.brez.os.infra.2011, Slovenija, by = "StatisticnaRegija"),
                aes(x = long, y = lat, group = group, fill = DelezVOdstotkih))+
@@ -110,9 +113,11 @@ zemljevid.stanovanja.brez.os.infra.2011 <- ggplot() +
   scale_fill_gradient(low = '#FCDADA', high='#970303', limits=c(0,10)) +
   labs(fill="Delež po regijah")
 
-
+#tabela za 2018
 stanovanja.brez.os.infra.2018 <- filter(stanovanja.brez.os.infra, Leto==2018) #vzamemo podatke samo za 1 leto
+Encoding(stanovanja.brez.os.infra.2018) <- "windows-1250"
 
+#zemljevid za 2018
 zemljevid.stanovanja.brez.os.infra.2018 <- ggplot() +
   geom_polygon(data = right_join(stanovanja.brez.os.infra.2018,Slovenija, by = "StatisticnaRegija"),
                aes(x = long, y = lat, group = group, fill = DelezVOdstotkih))+
