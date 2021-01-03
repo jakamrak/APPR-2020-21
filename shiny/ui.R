@@ -13,7 +13,8 @@ shinyUI(
                                       min = 2010,
                                       max = 2019,
                                       value = 2010, 
-                                      step = 1)
+                                      step = 1, 
+                                      sep = "")
                         ), #konec prvega sidebar panel
                         mainPanel(
                           plotOutput(outputId = "prvigraf"))
