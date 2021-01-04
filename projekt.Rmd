@@ -144,7 +144,7 @@ source("analiza/analiza.r", encoding="UTF-8")
 graf_regresija
 ```
 
-S pomočjo polinoma 2. stopnje sem poskusil napovedati, kaj se bo s stroški gradbenega meteriala zgodilo v letu 2020 iz podatkov za leta od 2016 do 2019. Napoved kaže na znižanje stroškov gradbenega materiala, kar je tudi v skladu z dejanskimi razmerami, ki pa jih nisem mogel uporabiti v nalogi, saj so podatki podani za četrtletja in za zadnje četrtletje še nimam podatka. Tako lahko vidimo, da bo strošek material v prihodnje nižji, kar je kot sem že omenil, razlog manj kakovostne gradnje.
+S pomočjo polinoma 2. stopnje sem poskusil napovedati, kaj se bo s stroški gradbenega meteriala zgodilo v letu 2020 iz podatkov za leta od 2016 do 2019. Napoved kaže na znižanje stroškov gradbenega materiala v bližnji prihodnosti a ne nujno v letu 2020, kar je tudi v skladu z dejanskimi razmerami, ki pa jih nisem mogel uporabiti v nalogi, saj so podatki podani za četrtletja in za zadnje četrtletje še nimam podatka. Tako lahko vidimo, da bo strošek material v prihodnje nižji, kar je kot sem že omenil, razlog manj kakovostne gradnje.
 
 
 ***
