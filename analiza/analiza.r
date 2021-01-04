@@ -16,5 +16,4 @@ graf_regresija <- podatki %>% ggplot(aes(x=Leto, y=Indeks)) +
   scale_x_continuous('Leto', breaks = seq(2016, 2020, 1), limits = c(2016,2020)) +
   ylab("Indeks stroškov materiala") +
   labs(title = "Napoved indeksa stroškov materiala za leto 2020")
-plot(graf_regresija)  
 
