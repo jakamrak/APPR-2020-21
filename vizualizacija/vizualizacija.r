@@ -34,12 +34,19 @@ graf_stroski <- gradbeni.stroski %>%
   ylab("Indeks")+
   scale_x_continuous(name = "Leto", breaks = seq(2010,2019,1))+
   scale_y_continuous(name = "Indeks", breaks = seq(90,120,2))+
-  theme(legend.title = element_text(color = "red", size = 10),
-        legend.background = element_rect(fill = "darkgray"))+
+  theme(legend.title = element_text(color = "darkblue", size = 10),
+        axis.line = element_line(colour = "darkblue", 
+                                 size = 1, linetype = "solid"),
+        legend.background = element_rect(fill = "lightblue", linetype="solid", 
+                                         colour ="darkblue"),
+        legend.position = c(0.3, 0.8))+
   scale_color_discrete(name="Tip stroška",
                        labels=c("SkupajStroski"="Skupaj stroški",
                                 "StroskiDela"="Stroški dela",
                                 "StroskiMateriala"="Stroški materiala"))
+
+
+
 
 
 ##3
