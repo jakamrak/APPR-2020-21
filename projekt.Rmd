@@ -40,10 +40,10 @@ source("uvoz/uvoz.r", encoding="UTF-8")
 Podatke, potrebne za analize sem uvozil iz SURS-a v obliki CSV, xlsx in json. Vse podatke sem prečistil in spremenil v obliko *tidy data* ter tako dobil 7 manjših, urejenih tabel na katerih bom kasneje delal svoje analize.
 
 1. [gradbena.dovoljenja.letno](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1970716S.px/) - podatki o izdanih gradbenih dovoljenjih po statističnih regijah
-  - `StatisticnaRegija` - spremenljivka: ime statistične regije (character),
-  - `Leto` - spremenljivka: leto meritve (numeric),
-  - `SteviloStavb` - meritev: število stavb za katere je bilo v nekem letu izdano gradbeno dovoljenje (numeric),
-  - `Povrsina_m2` -meritev: površina stavb za katere je bilo v nekem letu izdano gradbeno dovoljenje (numeric).
+  - `StatisticnaRegija` - spremenljivka: ime statistične regije (neurejen faktor),
+  - `Leto` - spremenljivka: leto meritve (število),
+  - `SteviloStavb` - meritev: število stavb za katere je bilo v nekem letu izdano gradbeno dovoljenje (število),
+  - `Povrsina_m2` -meritev: površina stavb za katere je bilo v nekem letu izdano gradbeno dovoljenje (število).
 
 2. [gradbena.dovoljenja.sept](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1970712S.px) - podatki o izdanih gradbenih dovoljenjih za mesec september
   - `StatisticnaRegija` - spremenljivka: ime statistične regije (neurejen faktor),
