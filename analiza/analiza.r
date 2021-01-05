@@ -21,4 +21,4 @@ graf_regresija <- podatki %>% ggplot(aes(x=Leto, y=Indeks)) +
         axis.ticks = element_line(color = "red"), 
         axis.ticks.length = unit(2, "mm")) + 
   guides(color=FALSE)
-plot(graf_regresija)
+
