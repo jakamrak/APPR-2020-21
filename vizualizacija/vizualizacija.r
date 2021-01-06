@@ -92,10 +92,10 @@ graf_gradb.dela.in.arh.proj <- gradb.dela.in.arh.proj %>% ggplot(aes(x=Leto)) +
   theme_classic() +
   theme(axis.title.y.left = element_text(color="red", margin = margin(r = .3, unit = "cm")),
         axis.title.y.right = element_text(color="darkblue", margin = margin(l = .3, unit = "cm")), 
-        axis.text.y.right = element_text(angle = 15))
+        axis.text.y.right = element_text(angle = 15)) 
   
   
-
+  
 ##5
 #ZEMLJEVID
 
