@@ -30,8 +30,6 @@ graf_stroski <- gradbeni.stroski %>%
   geom_point(size=2)+
   labs(title="Indeksi gradbenih stroškov")+
   #guides(fill=guide_legend("Tip stroška"))+
-  xlab("Leto")+
-  ylab("Indeks")+
   scale_x_continuous(name = "Leto", breaks = seq(2010,2019,1))+
   scale_y_continuous(name = "Indeks", breaks = seq(90,120,2))+
   theme(legend.title = element_text(color = "darkblue", size = 10),
@@ -39,13 +37,12 @@ graf_stroski <- gradbeni.stroski %>%
                                  size = 1, linetype = "solid"),
         legend.background = element_rect(fill = "lightblue", linetype="solid", 
                                          colour ="darkblue"),
-        legend.position = c(0.3, 0.8))+
+        legend.position = c(0.3, 0.8),
+        panel.grid.minor = element_blank())+
   scale_color_discrete(name="Tip stroška",
                        labels=c("SkupajStroski"="Skupaj stroški",
                                 "StroskiDela"="Stroški dela",
                                 "StroskiMateriala"="Stroški materiala"))
-
-
 
 
 
