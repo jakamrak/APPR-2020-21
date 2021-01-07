@@ -2,23 +2,39 @@
 
 shinyServer(function(input, output) {
   output$prvigraf <- renderPlot({
-    podatki <- gradbena.dovoljenja.letno %>% filter(Leto==input$leto) 
-    print( ggplot(podatki) +
-             aes(x = SteviloStavb, y=Povrsina_1000m2, col=StatisticnaRegija) + 
-             geom_point(size=4) +
-             xlab("Število stavb") +
-             ylab("Površina stavb [1000 m^2]") +
-             labs(title="Površina in število stavb za katere so bila izdana gradbena dovoljenja")) +
-             guides(color=guide_legend("Statistična regija")) +
-             scale_x_continuous(breaks = seq(0, 1000, by=100), limits = c(0,1000)) +
-             scale_y_continuous(breaks = seq(0, 600, by =100), limits = c(0, 600)) +
-             theme_classic()
-      })
+    podatki <- gradbena.dovoljenja.letno %>% filter(Leto==input$leto)
+    if(input$odstrani == TRUE) {
+      podatki <- podatki %>% filter(StatisticnaRegija != "Osrednjeslovenska")
+      
+      ggplot(podatki) +
+        aes(x = SteviloStavb, y=Povrsina_1000m2, col=StatisticnaRegija) + 
+        geom_point(size=4) +
+        xlab("Število stavb") +
+        ylab("Površina stavb [1000 m^2]") +
+        labs(title="Površina in število stavb za katere so bila izdana gradbena dovoljenja") +
+        guides(color=guide_legend("Statistična regija")) +
+        scale_x_continuous(breaks = seq(0, 1000, by=100), limits = c(0,1000)) +
+        scale_y_continuous(breaks = seq(0, 400, by =100), limits = c(0, 400)) +
+        theme_classic()
+    } else {
+      ggplot(podatki) +
+        aes(x = SteviloStavb, y=Povrsina_1000m2, col=StatisticnaRegija) + 
+        geom_point(size=4) +
+        xlab("Število stavb") +
+        ylab("Površina stavb [1000 m^2]") +
+        labs(title="Površina in število stavb za katere so bila izdana gradbena dovoljenja") +
+        guides(color=guide_legend("Statistična regija")) +
+        scale_x_continuous(breaks = seq(0, 1000, by=100), limits = c(0,1000)) +
+        scale_y_continuous(breaks = seq(0, 600, by =100), limits = c(0, 600)) +
+        theme_classic()
+    }
+    
+  })
   
   #stolpci so stevilo stanovanj linijski pa povrsina
   output$drugigraf <- renderPlot({
     podatki1 <- dokoncana.stanovanja.st.in.povrsina %>% filter(StatisticnaRegija==input$regija)
-    print(ggplot(podatki1, aes(x=Leto))) +
+      ggplot(podatki1, aes(x=Leto)) +
       geom_line(aes(y=PovprecnaPovrsina_m2), size=1, color="royalblue") +
       scale_x_continuous(breaks=seq(2010, 2019, 1)) +
       scale_y_continuous(breaks = seq(25, 250, 25), limits=c(0, 260), 
@@ -29,7 +45,7 @@ shinyServer(function(input, output) {
       theme_classic() +
       theme(axis.title.y.left = element_text(color="royalblue", margin = margin(r = .3, unit = "cm")),
             axis.title.y.right = element_text(color="tomato4", margin = margin(l = .3, unit = "cm")))
-            
+    
     
   })
 })
