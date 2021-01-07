@@ -8,7 +8,7 @@ tortni <- gradb.dovoljenja.sept %>%
   arrange(desc(StatisticnaRegija)) %>%
   mutate(lab.ypos=cumsum(delezi) - 0.5*delezi)
 
-#Tortni diagram gradbenih dovoljenj za september
+#Tortni diagram gradbenih dovoljenj za september 2020
 
 graf_tortni <- ggplot(tortni) +
   aes(x="", y=delezi, fill=StatisticnaRegija) +
@@ -16,7 +16,7 @@ graf_tortni <- ggplot(tortni) +
   coord_polar(theta="y") + xlab("") + ylab("") +
   geom_text(aes(y=lab.ypos, label=paste0(round(delezi, 2), "%")),
             x=1.3, color="white", size=2.5) +
-  labs(title="Deleži izdanih gradbenih dovoljenj po regijah v mesecu septembru") +
+  labs(title="Deleži izdanih gradbenih dovoljenj po regijah v mesecu septembru leta 2020") +
   guides(fill=guide_legend("Statistična regija")) +
   theme_void()
 
@@ -60,15 +60,13 @@ graf_infra.in.place <- infra.in.place %>%
   ggplot(aes(x=Indeks, y=DelezVOdstotkih)) +
   geom_point(aes(color=StatisticnaRegija), size=2) +
   xlab("Indeks neto plač") +
-  ylab("Delež stanovanj") +
   scale_y_continuous(name="Delež stanovanj [%]", breaks=seq(2, 10, 1)) +
   labs(title="Delež naseljenih stanovanj brez osnovne infrastrukture in indeks neto plač") +
   guides(color=guide_legend("Statistična regija")) +
   facet_grid(. ~ Leto) +
-  geom_smooth(method="lm", se=FALSE)  #podatki so razprseni a vidi se da pri nizji 
-                                      #placi je delež stanovanj brez osnovne infra vecji in obratno
+  geom_smooth(method="lm", se=FALSE) + #podatki so razprseni a vidi se da pri nizji 
+  theme(panel.grid.minor = element_blank())                               #placi je delež stanovanj brez osnovne infra vecji in obratno
  
-
 ##4
 #PRIPRAVIM TABELO ZA RISANJE 
 
@@ -104,34 +102,26 @@ Slovenija$StatisticnaRegija <- gsub('Notranjsko-kraška', 'Primorsko-notranjska'
 Slovenija$StatisticnaRegija <- gsub('Spodnjeposavska', 'Posavska', Slovenija$StatisticnaRegija)
 #zamenjali smo stara imena s pravimi
 
-#tabela za leto 2011
-stanovanja.brez.os.infra.2011 <- filter(stanovanja.brez.os.infra, Leto==2011) #vzamemo podatke samo za 1 leto
 
-#zemljevid za 2011
-zemljevid.stanovanja.brez.os.infra.2011 <- ggplot() +
-  geom_polygon(data = right_join(stanovanja.brez.os.infra.2011, Slovenija, by = "StatisticnaRegija"),
+
+#tabela za leto 2011 in 2018
+stanovanja.brez.os.infra.2011.in.2018 <- filter(stanovanja.brez.os.infra, Leto==2011| Leto==2018)
+
+#zemljevid 
+zemljevid.stanovanja.brez.os.infra.2011.in.2018 <- ggplot() +
+  geom_polygon(data = right_join(stanovanja.brez.os.infra.2011.in.2018, Slovenija, by = "StatisticnaRegija"),
                aes(x = long, y = lat, group = group, fill = DelezVOdstotkih))+
-  xlab("") + 
-  ylab("") + 
-  ggtitle("Naseljena stanovanja brez osnovne infrastrukture v letu 2011") + 
+  ggtitle("Naseljena stanovanja brez osnovne infrastrukture v letu 2011 in 2018") + 
   theme(axis.title=element_blank(), axis.text=element_blank(), 
         axis.ticks=element_blank(), panel.background = element_blank()) +
   scale_fill_gradient(low = '#FCDADA', high='#970303', limits=c(0,10)) +
-  labs(fill="Delež po regijah v %")
+  labs(fill="Delež po regijah v %") +
+  geom_path(data = right_join(stanovanja.brez.os.infra.2011.in.2018, Slovenija,
+                              by = "StatisticnaRegija"), aes(x = long, y = lat, 
+                                                             group = group), 
+            color = "white", size = 0.1) +
+  facet_grid(. ~ Leto) 
 
-#tabela za 2018
-stanovanja.brez.os.infra.2018 <- filter(stanovanja.brez.os.infra, Leto==2018) #vzamemo podatke samo za 1 leto
 
 
-#zemljevid za 2018
-zemljevid.stanovanja.brez.os.infra.2018 <- ggplot() +
-  geom_polygon(data = right_join(stanovanja.brez.os.infra.2018,Slovenija, by = "StatisticnaRegija"),
-               aes(x = long, y = lat, group = group, fill = DelezVOdstotkih))+
-  xlab("") + 
-  ylab("") + 
-  ggtitle("Naseljena stanovanja brez osnovne infrastrukture v letu 2018") + 
-  theme(axis.title=element_blank(), axis.text=element_blank(), 
-        axis.ticks=element_blank(), panel.background = element_blank()) + 
-  scale_fill_gradient(low = '#FCDADA', high='#970303', limits=c(0,10)) +
-  labs(fill="Delež po regijah v %")
 

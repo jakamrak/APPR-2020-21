@@ -41,11 +41,11 @@ Podatke, potrebne za analize sem uvozil iz SURS-a v obliki CSV, xlsx in json. Vs
 
 1. [gradbena.dovoljenja.letno](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1970716S.px/) - podatki o izdanih gradbenih dovoljenjih po statističnih regijah
   - `StatisticnaRegija` - spremenljivka: ime statistične regije (neurejen faktor),
-  - `Leto` - spremenljivka: leto meritve (število),
+  - `Leto` - spremenljivka: leto meritve (število: 2010-2019),
   - `SteviloStavb` - meritev: število stavb za katere je bilo v nekem letu izdano gradbeno dovoljenje (število),
   - `Povrsina_m2` -meritev: površina stavb za katere je bilo v nekem letu izdano gradbeno dovoljenje (število).
 
-2. [gradbena.dovoljenja.sept](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1970712S.px) - podatki o izdanih gradbenih dovoljenjih za mesec september
+2. [gradbena.dovoljenja.sept](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1970712S.px) - podatki o izdanih gradbenih dovoljenjih za mesec september v letu 2020
   - `StatisticnaRegija` - spremenljivka: ime statistične regije (neurejen faktor),
   - `VrstaObjekta` - spremenljivka: pove ali je meritev za stanovanske ali nestanovanjske stavbe (neurejen faktor),
   - `SteviloStavb` - meritev: stevilo stavb za katere je bilo izdano gradbeno dovoljenje (število).
@@ -56,27 +56,27 @@ Podatke, potrebne za analize sem uvozil iz SURS-a v obliki CSV, xlsx in json. Vs
   - `Indeks` - meritev: indeks tega stroška v določenem letu (število).
   
   4. [indeks.cen.arh.proj](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/0427601S.px/) - podatki o ceni storitve arhitekturnega projektiranja
-  - `Leto` - spremenljivka: leto meritve (število),
+  - `Leto` - spremenljivka: leto meritve (število: 2010-2019),
   - `PovprecenIndeks` - meritev: povprečen indeks, izračunan iz četrtletnih (število).
   
   5. [indeks.neto.plac](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/0772610S.px/) - podatki o neto plačah po statističnih regijah letno
   - `StatisticnaRegija` - spremenljivka: ime statistične regije (neurejen faktor),
-  - `Leto` - spremenljivka: leto meritve (število),
+  - `Leto` - spremenljivka: leto meritve (število: 2010-2019),
   - `Indeks` - meritev: indeks neto plače (število).
   
   6. [stanovanja.brez.os.infra](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/0861201S.px/) - podatki o deležih naseljenih stanovanj brez osnovne infrastrukture po statističnih regijah
   - `StatisticnaRegija` - spremenljivka: ime statistične regije (neurejen faktor),
-  - `Leto` - spremenljivka:lwto meritve (število),
+  - `Leto` - spremenljivka: leto meritve (število: 2011, 2015, 2018),
   - `DelezVOdstotkih` - meritev: delež stanovanj brez osnovne infrastrukture v letu meritve (število).
   
   7. [vrednost.gradb.del](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1919802S.px/)- podatki o vrednosti opravljenih gradbenih del v posameznem letu (v 1000 EUR)
-  - `Leto` - spremenljivka: leto meritve (število),
+  - `Leto` - spremenljivka: leto meritve (število: 2010-2019),
   - `Vrednost_1000EUR` - meritev: vrednost vseh opravljenih gradbenih del v posameznem letu meritve v Sloveniji (število).
   
   8. [dokoncana.stanovanja.st.in.povrsina](https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1906910S.px)- podatki o številu dokončanih stanovanj na 1000 prebivalcev in njihovi povprečni površini ob koncu leta (po statističnih regijah)
   - `StatisticnaRegija` - spremenljivka: Regija (neurejen faktor),
-  - `Leto` - spremenljivka: leto meritve (število),
-  - `StDokoncanihStanovanjNa1000Prebivalcev` - meritev: število vseh dokončanih stanovanj ob koncu leta na 1000 prebivalcev (število).
+  - `Leto` - spremenljivka: leto meritve (število: 2010-2019),
+  - `StDokoncanihStanovanjNa1000Prebivalcev` - meritev: število vseh dokončanih stanovanj ob koncu leta na 1000 prebivalcev (število),
   - `PovprecnaPovrsina_m2` - meritev: povprečna površina stanovanj v tem letu (število).
   
 
@@ -106,16 +106,9 @@ Večino časa je strošek dela najvišji (višji kot strošek materiala in posle
 
 
 ```{r zemljevid1, echo=FALSE, fig.align='center'}
-zemljevid.stanovanja.brez.os.infra.2011
+zemljevid.stanovanja.brez.os.infra.2011.in.2018
 ```
-Zgornji zemljevid nam prikazuje delež naseljenih stanovanj brez osnovne infrastrukture v letu 2011. Podatke bomo natančneje analizirali in primerjali v naslednjem grafu.
-
-
-```{r zemljevid2, echo=FALSE, fig.align='center'}
-zemljevid.stanovanja.brez.os.infra.2018
-```
-Sedaj si poglejmo še podatke za leto 2018. Hitro opazimo, da je stanje v nekaterih regijah boljše, kar je najvrjetneje posledica dobrega gospodarskega stanja in rasti države v tem obdobju. 
-
+Zgornja zemljevida nam prikazujeta delež naseljenih stanovanj brez osnovne infrastrukture v letih 2011 in 2018. Hitro opazimo, da je stanje v nekaterih regijah v letu 2018 boljše, kar je najvrjetneje posledica dobrega gospodarskega stanja in rasti države v tem obdobju. 
 
 
 ```{r graf3, echo=FALSE, fig.align='center'}
@@ -150,7 +143,7 @@ S pomočjo polinoma 2. stopnje sem poskusil napovedati, kaj se bo s stroški gra
 ```{r zemljevid3, echo=FALSE, fig.align='center'}
 zemljevid.napredna.analiza
 ```
-Za drugi primer napredne analize sem na podatki naredil gručenje. Regije sem primerjal po povprečnih podatkih, dobljenih iz razpoložljivih podatkov. Tako sem jih primerjal po številu izdanih gradbenih dovoljenj, površini stanovanj za katere so bila izdana gradbena dovoljenja, indeksu neto plač, deležu naseljenih stanovanj brez osnovne infrastrukture in številu stanovanj na 1000 prebivalcev ter povprečni površini izgrajenih stanovanj v zadnjih 9-ih oziroma 10-ih letih.
+Za drugi primer napredne analize sem na podatki naredil gručenje. Regije sem primerjal po povprečnih podatkih, dobljenih iz razpoložljivih podatkov. Tako sem jih primerjal po številu izdanih gradbenih dovoljenj, površini stanovanj za katere so bila izdana gradbena dovoljenja, indeksu neto plač, deležu naseljenih stanovanj brez osnovne infrastrukture in številu stanovanj na 1000 prebivalcev ter povprečni površini izgrajenih stanovanj v zadnjih 9-ih oziroma 10-ih letih. Opazimo, da izstopa Osrednjeslovenska regija, kar je pričakovano, poleg tega so v isti skupini Goriška, Gorenjska, Primorsko-notranjska in Jugovzhodna Slovenija, kar je prav tako pričakovano. Zanimivo pa je, da sta v isti skupini Obalno-kraška regija in Pomurska, ki se po navadi zelo razlikujeta.
 
 
 ***
