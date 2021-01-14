@@ -10,7 +10,7 @@ shinyServer(function(input, output) {
         aes(x = SteviloStavb, y=Povrsina_1000m2, col=StatisticnaRegija) + 
         geom_point(size=4) +
         xlab("Število stavb") +
-        ylab("Površina stavb [1000 m^2]") +
+        ylab(expression(paste("Površina stavb [1000"," ", m^2,"]", sep=" "))) +
         labs(title="Površina in število stavb za katere so bila izdana gradbena dovoljenja") +
         guides(color=guide_legend("Statistična regija")) +
         scale_x_continuous(breaks = seq(0, 1000, by=100), limits = c(0,1000)) +
@@ -21,7 +21,7 @@ shinyServer(function(input, output) {
         aes(x = SteviloStavb, y=Povrsina_1000m2, col=StatisticnaRegija) + 
         geom_point(size=4) +
         xlab("Število stavb") +
-        ylab("Površina stavb [1000 m^2]") +
+        ylab(expression(paste("Površina stavb [1000"," ", m^2,"]", sep=" "))) +
         labs(title="Površina in število stavb za katere so bila izdana gradbena dovoljenja") +
         guides(color=guide_legend("Statistična regija")) +
         scale_x_continuous(breaks = seq(0, 1000, by=100), limits = c(0,1000)) +
@@ -30,6 +30,8 @@ shinyServer(function(input, output) {
     }
     
   })
+  
+  
   
   #stolpci so stevilo stanovanj linijski pa povrsina
   output$drugigraf <- renderPlot({
@@ -40,7 +42,8 @@ shinyServer(function(input, output) {
       scale_y_continuous(breaks = seq(25, 250, 25), limits=c(0, 260), 
                          sec.axis = sec_axis(~./50, name = "Število dokončanih stanovanj na 1000 prebivalcev")) +
       geom_col(aes(y=StDokoncanihStanovanjNa1000Prebivalcev*50), size=1, col="tomato4", alpha=I(0)) +
-      xlab("Leto") + ylab("Povprečna površina [m^2]") +
+      xlab("Leto") + 
+        ylab(expression(paste("Povprečna površina [", m^2,"]", sep=" "))) +
       labs(title = "Primerjava velikosti stanovanj in njihovega števila") +
       theme_classic() +
       theme(axis.title.y.left = element_text(color="royalblue", margin = margin(r = .3, unit = "cm")),

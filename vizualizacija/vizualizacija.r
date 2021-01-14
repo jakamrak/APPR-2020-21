@@ -83,7 +83,7 @@ graf_gradb.dela.in.arh.proj <- gradb.dela.in.arh.proj %>% ggplot(aes(x=Leto)) +
   geom_col(aes(y = Vrednost_1000EUR/17000), size = 1, col="darkblue", fill="white", alpha=I(0)) +
   xlab("Leto") + ylab("Indeks cen arhitekturnega projektiranja") +
   labs(title="Primerjava indeksa cen arhitekturnega projektiranja in vrednosti 
-       opravljenih gradbenih del") +
+       opravljenih gradbenih del za Slovenijo") +
   theme_classic() +
   theme(axis.title.y.left = element_text(color="red", margin = margin(r = .3, unit = "cm")),
         axis.title.y.right = element_text(color="darkblue", margin = margin(l = .3, unit = "cm")), 
