@@ -1,18 +1,19 @@
 # 4. faza: Analiza podatkov
 
-podatki <- gradbeni.stroski %>% filter(TipStroska=="StroskiMateriala") %>%
-  select(-"TipStroska")
+podatki <- gradbeni.stroski %>% filter(TipStroska=="StroskiMateriala", Leto >= 2016) %>%
+  select(-"TipStroska") 
+
+
 
 prileganje <- glm(data = podatki, Indeks ~ I(Leto) + I(Leto^2))
-
-leta <- data.frame(Leto=seq(2016, 2020, 1))
-napoved <- mutate(leta, Indeks=predict(prileganje, leta))
-
-podatki <- podatki %>% rbind(napoved %>% filter(Leto==2020)) #na stare podatke dodamo leto 2020 iz napovedi
+leta <- data.frame(Leto = 2020)
+napoved <- leta %>% mutate(Indeks=predict(prileganje,.))
+podatki <- podatki %>% rbind(napoved) #na stare podatke dodamo leto 2020 iz napovedi
 
 graf_regresija <- podatki %>% ggplot(aes(x=Leto, y=Indeks)) + 
-  geom_point(aes(color=(Leto == 2020)), size=3) + 
-  geom_smooth(method='glm', formula=y ~ poly(x,2,raw=TRUE), fullrange=TRUE, color='darkblue') +
+  geom_point(size=3) + 
+  geom_smooth(method='glm', formula=y ~ poly(x,2), color='darkblue') +
+  geom_point(data = napoved, aes(x = Leto, y = Indeks), color = "red", size = 3)+
   scale_x_continuous('Leto', breaks = seq(2016, 2020, 1), limits = c(2016,2020)) +
   ylab("Indeks stroškov materiala") +
   labs(title = "Napoved indeksa stroškov materiala za leto 2020") +
@@ -20,9 +21,9 @@ graf_regresija <- podatki %>% ggplot(aes(x=Leto, y=Indeks)) +
                                  size = 1, linetype = "solid"),
         axis.ticks = element_line(color = "red"), 
         axis.ticks.length = unit(2, "mm")) + 
-  guides(color=FALSE)
+  guides(color=FALSE) #dam stran legendo
 
-
+graf_regresija
 
 #METODA VODITELJEV
 
@@ -66,25 +67,24 @@ theme_map <-theme_minimal() +
 
 
 #modelacija podatkov
-data.norm <- povprecna.regije %>% .[c(2,3,4,5,6,7)] %>% scale()
+data.norm <- povprecna.regije %>% .[c(2,3,4,5,6,7)] %>% scale() #normalizirani podatki
 rownames(data.norm) <- povprecna.regije$StatisticnaRegija
 
-k <- kmeans(data.norm, 5, nstart=1000)
+k <- kmeans(data.norm, 5, nstart=1000) #v koliko skupin jih damo
 
 skupine <- data.frame(StatisticnaRegija=povprecna.regije$StatisticnaRegija,
                       skupina=factor(k$cluster))
 
 #narisemo zemljevid
 map.data <- right_join(skupine, Slovenija, by = "StatisticnaRegija")
-zemljevid.napredna.analiza <- ggplot() + 
-  geom_polygon(data = map.data, aes(x = long, y = lat, group = group, fill = skupina)) +
-  geom_path(data = map.data, aes(x = long, y = lat, group = group), 
+zemljevid.napredna.analiza <- ggplot(map.data) + 
+  geom_polygon(aes(x = long, y = lat, group = group, fill = skupina)) +
+  geom_path(aes(x = long, y = lat, group = group), 
             color = "white", size = 0.1) +
-  ggtitle("Gručenje regij s podobnimi lastnostmi") + 
-  labs(fill="Skupine regij") +
+  labs(fill="Skupine regij", title="Gručenje regij s podobnimi lastnostmi") +
   scale_fill_brewer(palette="Paired") +
   theme_map 
-  
+
 
 
 

@@ -6,7 +6,7 @@
 tortni <- gradb.dovoljenja.sept %>%
   mutate(delezi=100*SkupajObjekti / sum(SkupajObjekti)) %>%
   arrange(desc(StatisticnaRegija)) %>%
-  mutate(lab.ypos=cumsum(delezi) - 0.5*delezi)
+  mutate(lab.ypos=cumsum(delezi) - 0.5*delezi) #kumulativne vsote
 
 #Tortni diagram gradbenih dovoljenj za september 2020
 
@@ -29,7 +29,6 @@ graf_stroski <- gradbeni.stroski %>%
   geom_line()+
   geom_point(size=2)+
   labs(title="Indeksi gradbenih stroškov")+
-  #guides(fill=guide_legend("Tip stroška"))+
   scale_x_continuous(name = "Leto", breaks = seq(2010,2019,1))+
   scale_y_continuous(name = "Indeks", breaks = seq(90,120,2))+
   theme(legend.title = element_text(color = "darkblue", size = 10),
@@ -38,7 +37,7 @@ graf_stroski <- gradbeni.stroski %>%
         legend.background = element_rect(fill = "lightblue", linetype="solid", 
                                          colour ="darkblue"),
         legend.position = c(0.3, 0.8),
-        panel.grid.minor = element_blank())+
+        panel.grid.minor = element_blank())+ #odstranil vmesne osi
   scale_color_discrete(name="Tip stroška",
                        labels=c("SkupajStroski"="Skupaj stroški",
                                 "StroskiDela"="Stroški dela",
@@ -50,7 +49,8 @@ graf_stroski <- gradbeni.stroski %>%
 #PRIPRAVIM TABELO ZA RISANJE TOČKOVNEGA GRAFA 
 
 infra.in.place <- indeks.neto.plac %>%
-  right_join(stanovanja.brez.os.infra, by = c("StatisticnaRegija", "Leto"))
+  right_join(stanovanja.brez.os.infra, by = c("StatisticnaRegija", "Leto")) 
+#vzame samo vrednosti ki so na voljo v stanobanja brez os infra
 
 
 #Točkovni grafikon primerjave indeksa plac z deležem naseljenih stanovanja brez
@@ -65,8 +65,10 @@ graf_infra.in.place <- infra.in.place %>%
   guides(color=guide_legend("Statistična regija")) +
   facet_grid(. ~ Leto) +
   geom_smooth(method="lm", se=FALSE) + #podatki so razprseni a vidi se da pri nizji 
-  theme(panel.grid.minor = element_blank())                               #placi je delež stanovanj brez osnovne infra vecji in obratno
- 
+  theme(panel.grid.minor = element_blank()) #placi je delež stanovanj brez osnovne infra vecji in obratno
+
+
+
 ##4
 #PRIPRAVIM TABELO ZA RISANJE 
 
@@ -89,7 +91,8 @@ graf_gradb.dela.in.arh.proj <- gradb.dela.in.arh.proj %>% ggplot(aes(x=Leto)) +
         axis.title.y.right = element_text(color="darkblue", margin = margin(l = .3, unit = "cm")), 
         axis.text.y.right = element_text(angle = 15)) 
   
-  
+
+
   
 ##5
 #ZEMLJEVID
