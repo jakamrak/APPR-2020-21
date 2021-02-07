@@ -16,8 +16,8 @@ graf_tortni <- ggplot(tortni) +
   coord_polar(theta="y") + xlab("") + ylab("") +
   geom_text(aes(y=lab.ypos, label=paste0(round(delezi, 2), "%")),
             x=1.3, color="white", size=2.5) +
-  labs(title="Deleži izdanih gradbenih dovoljenj po regijah v mesecu septembru leta 2020") +
-  guides(fill=guide_legend("Statistična regija")) +
+  labs(title="Deleži izdanih gradbenih dovoljenj po regijah v mesecu septembru leta 2020", 
+       fill="Statistična regija") +
   theme_void()
 
 
